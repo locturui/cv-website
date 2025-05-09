@@ -9,7 +9,7 @@
       </p>
 
       <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-        <NuxtLink to="/projects" class="btn btn-primary gap-2">
+        <NuxtLink :to="localePath('/projects')" class="btn btn-primary gap-2">
           <Sparkles class="w-5 h-5" /> {{ $t('projects.btn') }}
         </NuxtLink>
       </div>
