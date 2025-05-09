@@ -34,7 +34,7 @@
                 "Developing booking & schedule UI with Nuxt 3 and Pinia",
                 "Implemented dynamic form builder and interactive map view"
                 ],
-                "tech": "Vue 3, Nuxt 3, Tailwind CSS, Pinia"
+                "tech": "Vue 3, Nuxt 3, Tailwind CSS / daisyUI, Pinia"
             },
             "alumniportal": {
                 "year": "Jun 2024 – Jul 2024",
@@ -44,7 +44,7 @@
                 "Architected portal layout, authentication flow, API integration",
                 "Mentored two щерук developers"
                 ],
-                "tech": "Vue 3, Nuxt 3, Tailwind CSS, Pinia"
+                "tech": "Vue 3, Tailwind CSS, Pinia"
             },
             "qpd": {
                 "year": "Jan 2022 – Aug 2022",
@@ -83,7 +83,7 @@
                 "desc": "Ceramics studio website with a gallery and online store.",
                 "link": "https://github.com/locturui/artpolly-vue",
                 "image": "/img/artpolly.png",
-                "stack": ["Vue", "Nuxt", "Pinia", "Tailwind CSS"]
+                "stack": ["Vue", "Pinia", "Tailwind CSS"]
             },
             "excursion": {
                 "title": "ExcursionCRM – work in progress",
