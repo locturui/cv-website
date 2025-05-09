@@ -1,75 +1,61 @@
-# Nuxt Minimal Starter
+# 📄 CV
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A clean, responsive portfolio site built with **Nuxt 3**, **Vue 3**, **Tailwind CSS 4** and **DaisyUI 5**.
+It comes pre‑wired with scroll animations (AOS), and crisp SVG icons from lucide‑vue‑next.
 
-## Setup
+![screenshot of home page](https://github.com/user-attachments/assets/d6c414dd-60d6-40e8-9b8e-8f88dc06c81b)
 
-Make sure to install dependencies:
+---
+
+## 🛠 Tech Stack
+
+* **Core:** Nuxt, Vue
+* **Styling:** Tailwind 4, DaisyUI 5
+* **Animation:** AOS
+* **Icons:** lucide‑vue‑next 
+* **Tooling:** pnpm, Vite
+
+---
+
+## 🚀 Quick Start
 
 ```bash
-# npm
-npm install
+# 1. Clone the repo
+git clone https://github.com/locturui/cv-website.git
+cd cv-website
 
-# pnpm
+# 2. Install dependencies (pick one)
 pnpm install
 
-# yarn
-yarn install
-
-# bun
-bun install
+# 3. Fire up the dev server
+pnpm dev           
 ```
+Open **[http://localhost:3000](http://localhost:3000)** 
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+### Production build
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
 pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
 pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+---
+
+## ☁️ Deployment
+
+[Here is the deployed website](https://locturui-cv.vercel.app)
+
+
+---
+
+## 💬 Acknowledgements
+
+* [Nuxt 3](https://nuxt.com/)
+* [Tailwind CSS](https://tailwindcss.com/)
+* [DaisyUI](https://daisyui.com/)
+* [lucide‑icons](https://lucide.dev/)
+* [AOS](https://michalsnik.github.io/aos/)
+
+---
+
+> Built with ♥ and Nuxt in 2025.
