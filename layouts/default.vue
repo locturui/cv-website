@@ -39,11 +39,11 @@
                 <Menu class="w-5 h-5" />
             </summary>
             <ul class="menu dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-40">
-                <li><NuxtLink to="/">Home</NuxtLink></li>
-                <li><NuxtLink to="/skills">Skills</NuxtLink></li>
-                <li><NuxtLink to="/experience">Experience</NuxtLink></li>
-                <li><NuxtLink to="/projects">Projects</NuxtLink></li>
-                <li><NuxtLink to="/contact">Contact</NuxtLink></li>
+                <li><NuxtLink :to="localePath('/')">{{ $t('nav.home') }}</NuxtLink></li>
+                <li><NuxtLink :to="localePath('/skills')">{{ $t('nav.skills') }}</NuxtLink></li>
+                <li><NuxtLink :to="localePath('/experience')">{{ $t('nav.exp') }}</NuxtLink></li>
+                <li><NuxtLink :to="localePath('/projects')">{{ $t('nav.projects') }}</NuxtLink></li>
+                <li><NuxtLink :to="localePath('/contact')">{{ $t('nav.contact') }}</NuxtLink></li>
             </ul>
             </details>
         </div>
