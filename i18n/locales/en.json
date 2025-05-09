@@ -1,0 +1,106 @@
+{
+    "nav": {
+        "name": "Stepan Leonov",
+        "home": "Home",
+        "skills": "Skills",
+        "exp":"Experience",
+        "projects": "Projects",
+        "contact": "Contact"
+    },
+    "hero": {
+        "hi": "Hi, I’m",
+        "bio": "Front‑end developer with a knack for data‑driven products. I build fast, accessible interfaces in Vue 3 / Nuxt 3, sprinkle in TailwindCSS, and wire everything to scalable backends."
+    },
+    "projects": {
+        "btn": "Explore projects"
+    },
+    "stats": {
+        "years": "Years of coding",
+        "bugs": "Bugs squashed",
+        "coffee": "Cups of coffee"
+    },
+    "skills": {
+        "title": "Skill Set"
+    },
+    "exp": {
+        "title": "Experience",
+        "stackLabel": "Stack",
+        "jobs": {
+            "excursioncrm": {
+                "year": "Apr 2025 – Now",
+                "role": "Frontend Developer",
+                "company": "ExcursionCRM · Innopolis University",
+                "bullets": [
+                "Developing booking & schedule UI with Nuxt 3 and Pinia",
+                "Implemented dynamic form builder and interactive map view"
+                ],
+                "tech": "Vue 3, Nuxt 3, Tailwind CSS, Pinia"
+            },
+            "alumniportal": {
+                "year": "Jun 2024 – Jul 2024",
+                "role": "Frontend Developer",
+                "company": "AlumniPortal · Innopolis University",
+                "bullets": [
+                "Architected portal layout, authentication flow, API integration",
+                "Mentored two щерук developers"
+                ],
+                "tech": "Vue 3, Nuxt 3, Tailwind CSS, Pinia"
+            },
+            "qpd": {
+                "year": "Jan 2022 – Aug 2022",
+                "role": "Junior Frontend Developer",
+                "company": "QPD (Vodafone project)",
+                "bullets": [
+                "Built React + TypeScript interfaces for internal CRM",
+                "Optimised large data tables and crafted custom UI components"
+                ],
+                "tech": "React, TypeScript, Redux, REST API"
+            },
+            "elbrus": {
+                "year": "Jul 2021 – Dec 2021",
+                "role": "Full‑Stack Dev Intern (Bootcamp)",
+                "company": "Elbrus Coding Bootcamp",
+                "bullets": [
+                "ECO‑FRIEND: map‑based recycling web‑app (React + Node)",
+                "MEBEL CRM: furniture company CRM (Handlebars + Node)"
+                ],
+                "tech": "React, Node.js, MongoDB, PostgreSQL"
+            }
+        }
+    },
+    "proj": {
+        "title": "Projects",
+        "items": {
+            "alumni": {
+                "title": "AlumniPortal",
+                "desc": "Portal for alumni of Innopolis University to connect and provide opportunities to current students.",
+                "link": "https://github.com/locturui/alumni",
+                "image": "/img/alumni.png",
+                "stack": ["Vue", "Nuxt", "Pinia", "Tailwind CSS"]
+            },
+            "artpolly": {
+                "title": "Artpolly Studio",
+                "desc": "Ceramics studio website with a gallery and online store.",
+                "link": "https://github.com/locturui/artpolly-vue",
+                "image": "/img/artpolly.png",
+                "stack": ["Vue", "Nuxt", "Pinia", "Tailwind CSS"]
+            },
+            "excursion": {
+                "title": "ExcursionCRM – work in progress",
+                "desc": "CRM for excursion scheduling and management in Innopolis city.",
+                "link": "",
+                "image": "https://placehold.co/400x250?text=CRM",
+                "stack": ["Vue", "Nuxt", "Pinia", "Tailwind CSS", "daisyUI"]
+            }
+        }
+    },
+    "cta": {
+        "title": "Let’s Work Together",
+        "lead": "Got an idea or position that could use my skills?",
+        "add": "Drop me a message — always happy to chat!",
+        "email": "Email",
+        "telegram": "Telegram",
+        "github": "GitHub"
+    }
+}
+  

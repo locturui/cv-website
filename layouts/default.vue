@@ -3,21 +3,23 @@
         <nav class="navbar bg-base-100 shadow-md sticky top-0 z-30 backdrop-blur">
         <div class="navbar-start">
             <NuxtLink to="/" class="btn btn-ghost text-xl font-bold gap-2 hover:opacity-80">
-            <Sparkles class="w-5 h-5" /> Stepan&nbsp;Leonov
+            <Sparkles class="w-5 h-5" /> {{ $t('nav.name') }}
             </NuxtLink>
         </div>
 
         <div class="navbar-center hidden md:flex">
             <ul class="menu menu-horizontal px-1 font-medium">
-            <li><NuxtLink to="/">Home</NuxtLink></li>
-            <li><NuxtLink to="/skills">Skills</NuxtLink></li>
-            <li><NuxtLink to="/experience">Experience</NuxtLink></li>
-            <li><NuxtLink to="/projects">Projects</NuxtLink></li>
-            <li><NuxtLink to="/contact">Contact</NuxtLink></li>
+            <li><NuxtLink :to="localePath('/')">{{ $t('nav.home') }}</NuxtLink></li>
+            <li><NuxtLink :to="localePath('/skills')">{{ $t('nav.skills') }}</NuxtLink></li>
+            <li><NuxtLink :to="localePath('/experience')">{{ $t('nav.exp') }}</NuxtLink></li>
+            <li><NuxtLink :to="localePath('/projects')">{{ $t('nav.projects') }}</NuxtLink></li>
+            <li><NuxtLink :to="localePath('/contact')">{{ $t('nav.contact') }}</NuxtLink></li>
             </ul>
         </div>
 
         <div class="navbar-end gap-2">
+            <LanguageSwitcher />
+
             <label class="swap swap-rotate btn btn-ghost btn-circle">
             <input type="checkbox" @change="toggleTheme" :checked="theme === 'dark'" />
             <Sun class="swap-off w-5 h-5" />
@@ -92,6 +94,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { Sun, Moon, Sparkles, Github, CircleUser, Mail, Send, Menu } from 'lucide-vue-next'
 
+const localePath = useLocalePath()
 const theme = ref<'light' | 'dark'>('light')
 function applyTheme(value: 'light' | 'dark') {
     document.documentElement.setAttribute('data-theme', value)

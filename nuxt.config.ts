@@ -5,15 +5,22 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
-  modules: ['@vueuse/nuxt'],
+  modules: ['@nuxt/ui', '@nuxtjs/i18n'],
   ssr: false,
+  i18n: {
+    langDir: 'locales',     // tells Nuxt where the JSON lives
+    lazy: true,             // (optional) explicit is fine
+    locales: [
+      { code: 'en', iso: 'en-US', file: 'en.json', name: 'English' },
+      { code: 'ru', iso: 'ru-RU', file: 'ru.json', name: 'Русский' }
+    ],
+    strategy: 'prefix_except_default',
+    defaultLocale: 'en'
+  },
   vite: {
     plugins: [
       tailwindcss(),
     ],
-    optimizeDeps: {
-      include: ['@vueuse/nuxt']
-    }
   },
   app: {
     pageTransition: false

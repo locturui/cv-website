@@ -1,6 +1,6 @@
 <template>
   <section class="max-w-6xl mx-auto py-16" data-aos="fade-up">
-    <h2 class="text-4xl font-bold mb-10 text-center">Projects</h2>
+    <h2 class="text-4xl font-bold mb-10 text-center">{{ $t('proj.title') }}</h2>
 
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       <ProjectCard
@@ -13,26 +13,27 @@
 </template>
 
 <script setup lang="ts">
-const projects = [
-  {
-    title: 'AlumniPortal',
-    desc:  'Portal for alumni of Innopolis University to connect and provide opportunities to current students.',
-    link:  'https://github.com/locturui/alumni',
-    image: '/img/alumni.png',
-    stack: ['Vue', 'Nuxt', 'Pinia', 'Tailwind CSS'],
-  },
-  {
-    title: 'Artpolly Studio',
-    desc:  'Ceramics studio website with a gallery and online store.',
-    link:  'https://github.com/locturui/artpolly-vue',
-    image: '/img/artpolly.png',
-    stack: ['Vue', 'Nuxt', 'Pinia', 'Tailwind CSS'],
-  },
-  {
-    title: 'ExcursionCRM - work in progress',
-    desc:  'CRM for excursion scheduling and management in Innopolis city.',
-    image: 'https://placehold.co/400x250?text=CRM',
-    stack: ['Vue', 'Nuxt', 'Pinia', 'Tailwind CSS', 'daisyUI'],
-  },
-]
+const projectKeys = ['alumni', 'artpolly', 'excursion']
+
+const { t, tm } = useI18n()
+
+const projects = computed(() =>
+  projectKeys.map(key => {
+    const base = `proj.items.${key}`
+
+    const nTags = tm(`${base}.stack`).length
+
+    const stack = Array.from({ length: nTags }, (_, i) =>
+      t(`${base}.stack[${i}]`)
+    )
+
+    return {
+      title:  t(`${base}.title`),
+      desc:   t(`${base}.desc`),
+      link:   t(`${base}.link`),
+      image:  t(`${base}.image`),
+      stack
+    }
+  })
+)
 </script>

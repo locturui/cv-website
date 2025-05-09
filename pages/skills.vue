@@ -1,6 +1,6 @@
 <template>
   <section class="max-w-5xl mx-auto py-16" data-aos="fade-up">
-    <h2 class="text-4xl font-bold mb-8 text-center">Skill Set</h2>
+    <h2 class="text-4xl font-bold mb-8 text-center">{{ $t('skills.title') }}</h2>
 
     <div class="grid gap-8 md:grid-cols-2 p-4 lg:p-0">
       <SkillCard

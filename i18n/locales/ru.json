@@ -1,0 +1,106 @@
+{
+    "nav": {
+      "name": "Степан Леонов",
+      "home": "Главная",
+      "skills": "Навыки",
+      "exp": "Опыт",
+      "projects": "Проекты",
+      "contact": "Контакты"
+    },
+    "hero": {
+      "hi": "Привет, я",
+      "bio": "Фронтенд‑разработчик, увлечённый data‑driven продуктами. Создаю быстрые, доступные интерфейсы на Vue 3 / Nuxt 3, приправленные TailwindCSS, и связываю их с масштабируемыми бэкэндами."
+    },
+    "projects": {
+      "btn": "Смотреть проекты"
+    },
+    "stats": {
+      "years": "Лет в кодинге",
+      "bugs": "Исправлено багов",
+      "coffee": "Выпито чашек кофе"
+    },
+    "skills": {
+        "title": "Навыки"
+    },
+    "exp": {
+        "title": "Опыт",
+        "stackLabel": "Стек",
+        "jobs": {
+            "excursioncrm": {
+                "year": "Апр 2025 – н.в.",
+                "role": "Фронтенд‑разработчик",
+                "company": "ExcursionCRM · Университет Иннополис",
+                "bullets": [
+                "Разрабатываю интерфейс бронирования и расписания на Nuxt 3 и Pinia",
+                "Реализовал динамический конструктор форм и интерактивную карту"
+                ],
+                "tech": "Vue 3, Nuxt 3, Tailwind CSS, Pinia"
+            },
+            "alumniportal": {
+                "year": "Июн 2024 – Июл 2024",
+                "role": "Фронтенд‑разработчик",
+                "company": "AlumniPortal · Университет Иннополис",
+                "bullets": [
+                "Спроектировал структуру портала, поток аутентификации и интеграцию с API",
+                "Наставлял двух других разработчиков"
+                ],
+                "tech": "Vue 3, Nuxt 3, Tailwind CSS, Pinia"
+            },
+            "qpd": {
+                "year": "Янв 2022 – Авг 2022",
+                "role": "Младший фронтенд‑разработчик",
+                "company": "QPD (проект Vodafone)",
+                "bullets": [
+                "Создавал интерфейсы React + TypeScript для внутренней CRM",
+                "Оптимизировал большие таблицы данных и разрабатывал кастомные UI‑компоненты"
+                ],
+                "tech": "React, TypeScript, Redux, REST API"
+            },
+            "elbrus": {
+                "year": "Июл 2021 – Дек 2021",
+                "role": "Стажёр full‑stack‑разработчик (буткемп)",
+                "company": "Elbrus Coding Bootcamp",
+                "bullets": [
+                "ECO‑FRIEND: веб‑приложение для переработки отходов с картой (React + Node)",
+                "MEBEL CRM: CRM для мебельной компании (Handlebars + Node)"
+                ],
+                "tech": "React, Node.js, MongoDB, PostgreSQL"
+            }
+        }
+    },
+    "proj": {
+        "title": "Проекты",
+        "items": {
+            "alumni": {
+                "title": "AlumniPortal",
+                "desc": "Портал для выпускников Университета Иннополис, где они могут общаться и помогать нынешним студентам.",
+                "link": "https://github.com/locturui/alumni",
+                "image": "/img/alumni.png",
+                "stack": ["Vue", "Nuxt", "Pinia", "Tailwind CSS"]
+            },
+            "artpolly": {
+                "title": "Artpolly Studio",
+                "desc": "Сайт керамической студии с галереей и интернет‑магазином.",
+                "link": "https://github.com/locturui/artpolly-vue",
+                "image": "/img/artpolly.png",
+                "stack": ["Vue", "Nuxt", "Pinia", "Tailwind CSS"]
+            },
+            "excursion": {
+                "title": "ExcursionCRM – разработка",
+                "desc": "CRM‑система для планирования и управления экскурсиями в городе Иннополис.",
+                "link": "",
+                "image": "https://placehold.co/400x250?text=CRM",
+                "stack": ["Vue", "Nuxt", "Pinia", "Tailwind CSS", "daisyUI"]
+            }
+        }
+    },
+    "cta": {
+        "title": "Давайте работать вместе",
+        "lead": "Есть идея или вакансия, где пригодятся мои навыки?",
+        "add": "Напишите мне — всегда рад обсудить!",
+        "email": "Почта",
+        "telegram": "Телеграм",
+        "github": "GitHub"
+    }
+}
+  
