@@ -15,18 +15,24 @@
 <script setup lang="ts">
 const projects = [
   {
-    title: 'ExcursionCRM',
-    desc:  'CRM for excursion scheduling and management in Innopolis city.',
-    //link:  'https://github.com/temp',
-    image: 'https://placehold.co/400x250?text=CRM',
-    stack: ['Vue', 'Nuxt', 'Pinia', 'Tailwind CSS', 'daisyUI'],
-  },
-  {
     title: 'AlumniPortal',
     desc:  'Portal for alumni of Innopolis University to connect and provide opportunities to current students.',
-    //link:  'https://github.com/temp',
-    image: 'https://placehold.co/400x250?text=Uni Portal',
+    link:  'https://github.com/locturui/alumni',
+    image: '/img/alumni.png',
     stack: ['Vue', 'Nuxt', 'Pinia', 'Tailwind CSS'],
+  },
+  {
+    title: 'Artpolly Studio',
+    desc:  'Ceramics studio website with a gallery and online store.',
+    link:  'https://github.com/locturui/artpolly-vue',
+    image: '/img/artpolly.png',
+    stack: ['Vue', 'Nuxt', 'Pinia', 'Tailwind CSS'],
+  },
+  {
+    title: 'ExcursionCRM - work in progress',
+    desc:  'CRM for excursion scheduling and management in Innopolis city.',
+    image: 'https://placehold.co/400x250?text=CRM',
+    stack: ['Vue', 'Nuxt', 'Pinia', 'Tailwind CSS', 'daisyUI'],
   },
 ]
 </script>
