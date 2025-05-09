@@ -34,16 +34,20 @@
             <Github class="w-5 h-5" />
             </a>
 
-            <details class="dropdown dropdown-end md:hidden">
+            <details 
+                class="dropdown dropdown-end md:hidden"
+                :open="menuOpen"
+                @toggle="menuOpen = $event.target.open"
+            >
             <summary class="btn btn-ghost btn-circle" aria-label="Menu">
                 <Menu class="w-5 h-5" />
             </summary>
             <ul class="menu dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-40">
-                <li><NuxtLink :to="localePath('/')">{{ $t('nav.home') }}</NuxtLink></li>
-                <li><NuxtLink :to="localePath('/skills')">{{ $t('nav.skills') }}</NuxtLink></li>
-                <li><NuxtLink :to="localePath('/experience')">{{ $t('nav.exp') }}</NuxtLink></li>
-                <li><NuxtLink :to="localePath('/projects')">{{ $t('nav.projects') }}</NuxtLink></li>
-                <li><NuxtLink :to="localePath('/contact')">{{ $t('nav.contact') }}</NuxtLink></li>
+                <li><NuxtLink :to="localePath('/')" @click="menuOpen = false">{{ $t('nav.home') }}</NuxtLink></li>
+                <li><NuxtLink :to="localePath('/skills')" @click="menuOpen = false">{{ $t('nav.skills') }}</NuxtLink></li>
+                <li><NuxtLink :to="localePath('/experience')" @click="menuOpen = false">{{ $t('nav.exp') }}</NuxtLink></li>
+                <li><NuxtLink :to="localePath('/projects')" @click="menuOpen = false">{{ $t('nav.projects') }}</NuxtLink></li>
+                <li><NuxtLink :to="localePath('/contact')" @click="menuOpen = false">{{ $t('nav.contact') }}</NuxtLink></li>
             </ul>
             </details>
         </div>
@@ -88,13 +92,17 @@
 </template>
   
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { Sun, Moon, Sparkles, Github, CircleUser, Mail, Send, Menu } from 'lucide-vue-next'
 
 const localePath = useLocalePath()
+
+const menuOpen = ref(false)
+const route = useRoute()
+
 const theme = ref<'light' | 'dark'>('light')
 function applyTheme(value: 'light' | 'dark') {
     document.documentElement.setAttribute('data-theme', value)
@@ -113,9 +121,16 @@ onMounted(() => {
 })
 
 const router = useRouter()
-router.afterEach(() => setTimeout(() => AOS.refresh(), 250))
+router.afterEach(() => setTimeout(() => {
+    AOS.refresh()
+}, 250))
 
 const year = computed(() => new Date().getFullYear())
+
+watch(
+  () => route.fullPath,
+  () => { menuOpen.value = false }
+)
 </script>
 
 <style>

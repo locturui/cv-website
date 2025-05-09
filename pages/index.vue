@@ -35,4 +35,5 @@
 
 <script setup>
 import { Sparkles, Download } from 'lucide-vue-next'
+const localePath = useLocalePath()
 </script>
