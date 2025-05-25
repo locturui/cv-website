@@ -5,11 +5,11 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
-  modules: ['@nuxt/ui', '@nuxtjs/i18n'],
+  modules: ['@nuxt/ui', '@nuxtjs/i18n', '@nuxt/icon'],
   ssr: false,
   i18n: {
-    langDir: 'locales',     // tells Nuxt where the JSON lives
-    lazy: true,             // (optional) explicit is fine
+    langDir: 'locales',
+    lazy: true,
     locales: [
       { code: 'en', iso: 'en-US', file: 'en.json', name: 'English' },
       { code: 'ru', iso: 'ru-RU', file: 'ru.json', name: 'Русский' }

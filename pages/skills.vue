@@ -15,12 +15,47 @@
 
 <script setup lang="ts">
 const groups = [
-  { title: 'Frontend',    items: ['HTML5',
-  'CSS3 / SCSS',
-  'JS',
-  'TS', 'Vue 3', 'Nuxt', 'Vite', 'Tailwind', 'daisyUI', 'Pinia'] },
-  { title: 'Backend',   items: ['Go', 'gin', 'Goroutines & Channels', 'net/http', 'gRPC', 'Database/sql & GORM'] },
-  { title: 'Dev Ops',     items: ['Docker', 'CI/CD', 'ESLint'] },
-  { title: 'Soft Skills', items: ['Agile', 'Public Speaking', 'Proficient English', 'Tech Writing'] },
+  {
+    title: 'Frontend',
+    items: [
+      { name: 'HTML5',        icon: 'tabler:brand-html5' },
+      { name: 'CSS3 / SCSS',  icon: 'tabler:brand-css3' },
+      { name: 'JavaScript',    icon: 'tabler:brand-javascript' },
+      { name: 'TypeScripts',   icon: 'tabler:brand-typescript' },
+      { name: 'Vue 3',         icon: 'tabler:brand-vue' },
+      { name: 'Nuxt',          icon: 'tabler:brand-nuxt' },
+      { name: 'Vite',          icon: 'tabler:brand-vite' },
+      { name: 'Tailwind',      icon: 'tabler:brand-tailwind' },
+      { name: 'daisyUI' },
+      { name: 'Pinia' }
+    ]
+  },
+  {
+    title: 'Backend',
+    items: [
+      { name: 'Go',               icon: 'tabler:brand-golang' },
+      { name: 'gin' },
+      { name: 'net/http' },
+      { name: 'gRPC' },
+      { name: 'SQL',     icon: 'tabler:database' }
+    ]
+  },
+  {
+    title: 'Dev Ops',
+    items: [
+      { name: 'Docker',   icon: 'tabler:brand-docker' },
+      { name: 'CI/CD',    icon: 'tabler:git-branch' },
+      { name: 'ESLint' }
+    ]
+  },
+  {
+    title: 'Soft Skills',
+    items: [
+      { name: 'Agile' },
+      { name: 'Public Speaking' },
+      { name: 'Proficient English' },
+      { name: 'Tech Writing' }
+    ]
+  }
 ]
 </script>

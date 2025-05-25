@@ -3,10 +3,11 @@
     <h2 class="text-4xl font-bold mb-10 text-center">{{ $t('exp.title') }}</h2>
     <ul
       class="p-5 lg:p-0 flex flex-col space-y-10 snap-y lg:flex-row
-          lg:space-y-0 lg:space-x-12 lg:overflow-x-auto lg:snap-x lg:scroll-pl-6"
+          lg:space-y-0 lg:space-x-12 lg:overflow-x-auto lg:snap-x lg:scroll-pl-6
+          scrollable-x"
     >
       <li v-for="key in jobKeys" :key="key"
-        class="relative flex flex-col snap-start lg:min-w-[20rem]"
+        class="relative flex flex-col snap-start lg:min-w-[20rem] py-6"
       >
 
         <div class="flex items-center lg:flex-col lg:items-start mb-5">
@@ -22,7 +23,7 @@
         </div>
         <div
           class="mt-4 lg:mt-0 p-6 bg-base-100 shadow-md rounded-box
-                 ring-1 ring-base-200 w-full"
+                 ring-1 ring-base-200 w-full h-full"
         >
           <h3 class="font-semibold">{{ $t(`exp.jobs.${key}.role`) }}</h3>
           <p class="text-sm opacity-70">{{ $t(`exp.jobs.${key}.company`) }}</p>
@@ -49,3 +50,25 @@
 import { Briefcase } from 'lucide-vue-next'
 const jobKeys = ['excursioncrm', 'alumniportal', 'qpd', 'elbrus']
 </script>
+
+<style scoped>
+.scrollable-x {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+.scrollable-x::-webkit-scrollbar {
+  height: 8px;
+}
+.scrollable-x::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+.scrollable-x::-webkit-scrollbar-thumb {
+  background: #570DF8;
+  border-radius: 4px;
+}
+.scrollable-x {
+  scrollbar-width: thin;
+  scrollbar-color: #570DF8 #e5e7eb;
+}
+</style>
