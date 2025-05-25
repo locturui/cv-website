@@ -7,7 +7,7 @@
       <a href="mailto:leonovstepan.jobs@outlook.com" class="btn btn-primary gap-2">
         <Mail class="w-5 h-5" /> {{ $t('cta.email') }}
       </a>
-      <a href="https://t.me/locturui" target="_blank" class="btn btn-outline gap-2">
+      <a href="https://t.me/peatubaeg" target="_blank" class="btn btn-outline gap-2">
         <Send class="w-5 h-5" /> {{ $t('cta.telegram') }}
       </a>
       <a href="https://github.com/locturui" target="_blank" class="btn btn-outline gap-2">

@@ -71,7 +71,7 @@
             </div>
             <div class="flex gap-3">
             <a
-                href="https://t.me/locturui"
+                href="https://t.me/peatubaeg"
                 target="_blank"
                 aria-label="Telegram"
                 class="btn btn-ghost btn-circle hover:bg-primary/20 transition"
