@@ -24,7 +24,7 @@ It comes pre‑wired with scroll animations (AOS), and crisp SVG icons from luci
 git clone https://github.com/locturui/cv-website.git
 cd cv-website
 
-# 2. Install dependencies (pick one)
+# 2. Install dependencies
 pnpm install
 
 # 3. Fire up the dev server
