@@ -1,4 +1,4 @@
-import { put } from '@vercel/blob'
+import { put, head } from '@vercel/blob'
 import { checkAdminAuth } from '~/server/utils/auth'
 
 export default defineEventHandler(async (event) => {
@@ -23,6 +23,22 @@ export default defineEventHandler(async (event) => {
       })
     }
 
+    try {
+      const existingBlob = await head(file.filename, {
+        token: process.env.BLOB_READ_WRITE_TOKEN
+      })
+      
+      if (existingBlob) {
+        return {
+          success: true,
+          url: existingBlob.url,
+          filename: file.filename,
+          existing: true
+        }
+      }
+    } catch {
+    }
+
     const blob = await put(file.filename, file.data, {
       access: 'public',
       token: process.env.BLOB_READ_WRITE_TOKEN
@@ -31,7 +47,8 @@ export default defineEventHandler(async (event) => {
     return {
       success: true,
       url: blob.url,
-      filename: file.filename
+      filename: file.filename,
+      existing: false
     }
   } catch (error: any) {
     if (error.statusCode) throw error
