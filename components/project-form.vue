@@ -21,14 +21,27 @@
 
         <div class="form-control">
           <label class="label">
-            <span class="label-text font-semibold">Project Link</span>
-            <span class="label-text-alt text-xs">Optional GitHub/demo URL</span>
+            <span class="label-text font-semibold">GitHub Link</span>
+            <span class="label-text-alt text-xs">Repository URL</span>
           </label>
           <input 
-            v-model="form.link" 
+            v-model="form.githubLink" 
             type="url" 
             class="input input-bordered focus:input-primary" 
             placeholder="https://github.com/username/project" 
+          />
+        </div>
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text font-semibold">Deploy/Demo Link</span>
+            <span class="label-text-alt text-xs">Live site URL</span>
+          </label>
+          <input 
+            v-model="form.deployLink" 
+            type="url" 
+            class="input input-bordered focus:input-primary" 
+            placeholder="https://my-project.vercel.app" 
           />
         </div>
       </div>
@@ -126,13 +139,11 @@
       </div>
     </div>
 
-    <!-- Images -->
     <div class="card bg-base-200 p-4">
       <h4 class="font-bold text-lg mb-4 flex items-center gap-2">
         <span class="badge badge-primary">4</span> Images
       </h4>
       <div class="space-y-6">
-        <!-- Main Image -->
         <div>
           <label class="label">
             <span class="label-text font-semibold">Main Image</span>
@@ -171,7 +182,6 @@
             </div>
           </div>
         </div>
-
 
         <div class="divider"></div>
         <div>
@@ -224,6 +234,7 @@
       </div>
     </div>
 
+    <!-- Tech Stack -->
     <div class="card bg-base-200 p-4">
       <h4 class="font-bold text-lg mb-4 flex items-center gap-2">
         <span class="badge badge-primary">5</span> Tech Stack
@@ -306,6 +317,8 @@ const form = reactive({
   descriptionEn: '',
   descriptionRu: '',
   link: '',
+  githubLink: '',
+  deployLink: '',
   image: '',
   images: [] as string[],
   stack: [] as string[]
@@ -321,6 +334,8 @@ watch(() => props.project, (newProject) => {
     form.descriptionEn = newProject.descriptionEn || ''
     form.descriptionRu = newProject.descriptionRu || ''
     form.link = newProject.link || ''
+    form.githubLink = newProject.githubLink || ''
+    form.deployLink = newProject.deployLink || ''
     form.image = newProject.image || ''
     form.images = newProject.images ? [...newProject.images] : []
     form.stack = newProject.stack ? [...newProject.stack] : []
@@ -335,6 +350,8 @@ watch(() => props.project, (newProject) => {
     form.descriptionEn = ''
     form.descriptionRu = ''
     form.link = ''
+    form.githubLink = ''
+    form.deployLink = ''
     form.image = ''
     form.images = []
     form.stack = []

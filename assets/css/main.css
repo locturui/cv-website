@@ -4,3 +4,199 @@
         light --default,
         dark --prefersdark;
 }
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(20px) translateX(-10px);
+  }
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out;
+}
+
+/* Apple-style Liquid Glass Navigation */
+.glass-nav-item {
+  @apply relative px-5 py-2.5 rounded-xl font-medium text-sm;
+  @apply transition-all duration-500 ease-out;
+  @apply hover:text-base-content;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.glass-nav-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(0px);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.2),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.glass-nav-item:hover::before {
+  opacity: 1;
+  backdrop-filter: blur(25px) saturate(200%);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  box-shadow: 
+    inset 0 2px 6px rgba(255, 255, 255, 0.6),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.15),
+    0 8px 20px rgba(0, 0, 0, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.glass-nav-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  background: radial-gradient(circle at 50% 0%, 
+    rgba(255, 255, 255, 0.2),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.glass-nav-item:hover::after {
+  opacity: 1;
+}
+
+.glass-nav-item.router-link-active {
+  @apply text-primary font-semibold;
+}
+
+.glass-nav-item.router-link-active::before {
+  opacity: 1;
+  backdrop-filter: blur(25px) saturate(220%);
+  background: linear-gradient(135deg, 
+    rgba(var(--p), 0.4) 0%,
+    rgba(var(--p), 0.3) 50%,
+    rgba(var(--p), 0.15) 100%
+  );
+  box-shadow: 
+    inset 0 2px 6px rgba(255, 255, 255, 0.7),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.15),
+    0 8px 24px rgba(var(--p), 0.25),
+    0 4px 12px rgba(var(--p), 0.2);
+}
+
+/* Custom Buttons */
+.custom-btn {
+  @apply relative inline-flex items-center justify-center gap-2;
+  @apply px-6 py-3 rounded-xl font-semibold text-base;
+  @apply transition-all duration-300 ease-out;
+  @apply overflow-hidden;
+}
+
+.custom-btn-primary {
+  @apply bg-gradient-to-r from-primary to-secondary;
+  @apply text-primary-content shadow-lg;
+  @apply hover:shadow-2xl hover:scale-105;
+}
+
+.custom-btn-primary::before {
+  content: '';
+  @apply absolute inset-0 bg-white/0 transition-all duration-300;
+}
+
+.custom-btn-primary:hover::before {
+  @apply bg-white/10;
+}
+
+.custom-btn-secondary {
+  @apply bg-base-100/50 backdrop-blur-xl border-2 border-base-content/10;
+  @apply hover:bg-base-content/5 hover:border-primary/30;
+  @apply hover:shadow-lg hover:scale-105;
+}
+
+.custom-btn-ghost {
+  @apply bg-transparent hover:bg-base-200/50;
+  @apply hover:shadow-md transition-all;
+}
+
+/* Custom Scrollbar */
+.scrollable-x {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.scrollable-x::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollable-x::-webkit-scrollbar-track {
+  @apply bg-base-300 rounded;
+}
+
+.scrollable-x::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded;
+}
+
+.scrollable-x::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/80;
+}
+
+.scrollable-x {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(var(--p)) oklch(var(--b3));
+}

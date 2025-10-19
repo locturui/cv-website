@@ -19,6 +19,8 @@ export default defineEventHandler(async (event) => {
       descriptionEn: project.descriptionEn,
       descriptionRu: project.descriptionRu,
       link: project.link || '',
+      githubLink: project.githubLink || '',
+      deployLink: project.deployLink || '',
       image: project.image,
       images: JSON.parse(project.images),
       stack: JSON.parse(project.stack),

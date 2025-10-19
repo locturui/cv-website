@@ -1,56 +1,118 @@
 <template>
-    <div class="min-h-screen flex flex-col bg-base-200">
-        <nav class="navbar bg-base-100 shadow-md sticky top-0 z-30 backdrop-blur">
-        <div class="navbar-start">
-            <NuxtLink to="/" class="btn btn-ghost text-xl font-bold gap-2 hover:opacity-80">
-            <Sparkles class="w-5 h-5" /> {{ $t('nav.name') }}
-            </NuxtLink>
-        </div>
+    <div class="min-h-screen flex flex-col">
+        <nav class="sticky top-0 z-[9999] px-4 py-3">
+          <div class="max-w-7xl mx-auto">
+            <div class="flex items-center justify-between gap-4 px-4 py-2 rounded-2xl backdrop-blur-2xl">
+              <NuxtLink to="/" :class="['flex items-center gap-2 px-3 py-2 rounded-xl transition-all duration-300 group', menuOpen ? 'opacity-0 pointer-events-none' : '']">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
+                  <span class="text-white font-bold text-sm">SL</span>
+                </div>
+              </NuxtLink>
 
-        <div class="navbar-center hidden md:flex">
-            <ul class="menu menu-horizontal px-1 font-medium">
-            <li><NuxtLink :to="localePath('/')">{{ $t('nav.home') }}</NuxtLink></li>
-            <li><NuxtLink :to="localePath('/skills')">{{ $t('nav.skills') }}</NuxtLink></li>
-            <li><NuxtLink :to="localePath('/experience')">{{ $t('nav.exp') }}</NuxtLink></li>
-            <li><NuxtLink :to="localePath('/projects')">{{ $t('nav.projects') }}</NuxtLink></li>
-            <li><NuxtLink :to="localePath('/contact')">{{ $t('nav.contact') }}</NuxtLink></li>
-            </ul>
-        </div>
+              <div :class="['hidden md:flex items-center gap-1 px-2 py-1.5 rounded-xl bg-base-200/20 backdrop-blur-2xl border border-white/5 absolute left-1/2 transform -translate-x-1/2 transition-opacity duration-300', menuOpen ? 'opacity-0 pointer-events-none' : '']">
+                <NuxtLink 
+                  :to="localePath('/')" 
+                  class="glass-nav-item">
+                  {{ $t('nav.home') }}
+                </NuxtLink>
+                <NuxtLink 
+                  :to="localePath('/skills')" 
+                  class="glass-nav-item">
+                  {{ $t('nav.skills') }}
+                </NuxtLink>
+                <NuxtLink 
+                  :to="localePath('/experience')" 
+                  class="glass-nav-item">
+                  {{ $t('nav.exp') }}
+                </NuxtLink>
+                <NuxtLink 
+                  :to="localePath('/projects')" 
+                  class="glass-nav-item">
+                  {{ $t('nav.projects') }}
+                </NuxtLink>
+                <NuxtLink 
+                  :to="localePath('/contact')" 
+                  class="glass-nav-item">
+                  {{ $t('nav.contact') }}
+                </NuxtLink>
+              </div>
 
-        <div class="navbar-end gap-2">
-            <LanguageSwitcher />
+              <div class="flex items-center gap-2">
+                <div :class="['transition-opacity duration-300', menuOpen ? 'opacity-0 pointer-events-none' : '']">
+                  <LanguageSwitcher />
+                </div>
 
-            <label class="swap swap-rotate btn btn-ghost btn-circle">
-            <input type="checkbox" @change="toggleTheme" :checked="theme === 'dark'" />
-            <Sun class="swap-off w-5 h-5" />
-            <Moon class="swap-on w-5 h-5" />
-            </label>
+                <button 
+                  @click="toggleTheme"
+                  :class="['w-10 h-10 flex items-center justify-center rounded-xl hover:bg-base-200/50 transition-all duration-300 group', menuOpen ? 'opacity-0 pointer-events-none' : '']">
+                  <Sun v-if="theme === 'light'" class="w-5 h-5 text-warning group-hover:rotate-180 transition-transform duration-500" />
+                  <Moon v-else class="w-5 h-5 text-primary group-hover:-rotate-12 transition-transform duration-500" />
+                </button>
 
-            <a
-            href="https://github.com/locturui" target="_blank" rel="noopener"
-            class="btn btn-ghost btn-circle hidden sm:inline-flex"
-            aria-label="GitHub"
-            >
-            <Github class="w-5 h-5" />
-            </a>
+                <a
+                  href="https://github.com/locturui" 
+                  target="_blank" 
+                  rel="noopener"
+                  :class="['flex w-10 h-10 items-center justify-center rounded-xl hover:bg-base-200/50 hover:text-primary transition-all duration-300 group z-[10001]', menuOpen ? 'opacity-0 pointer-events-none' : '']"
+                  aria-label="GitHub">
+                  <Github class="w-5 h-5 group-hover:scale-110 transition-transform" />
+                </a>
 
-            <details 
-                class="dropdown dropdown-end md:hidden"
-                :open="menuOpen"
-                @toggle="menuOpen = $event.target.open"
-            >
-            <summary class="btn btn-ghost btn-circle" aria-label="Menu">
-                <Menu class="w-5 h-5" />
-            </summary>
-            <ul class="menu dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-40">
-                <li><NuxtLink :to="localePath('/')" @click="menuOpen = false">{{ $t('nav.home') }}</NuxtLink></li>
-                <li><NuxtLink :to="localePath('/skills')" @click="menuOpen = false">{{ $t('nav.skills') }}</NuxtLink></li>
-                <li><NuxtLink :to="localePath('/experience')" @click="menuOpen = false">{{ $t('nav.exp') }}</NuxtLink></li>
-                <li><NuxtLink :to="localePath('/projects')" @click="menuOpen = false">{{ $t('nav.projects') }}</NuxtLink></li>
-                <li><NuxtLink :to="localePath('/contact')" @click="menuOpen = false">{{ $t('nav.contact') }}</NuxtLink></li>
-            </ul>
-            </details>
-        </div>
+                <button 
+                  @click="menuOpen = !menuOpen"
+                  class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-base-200/50 transition-all cursor-pointer md:hidden relative z-[10000]" 
+                  aria-label="Menu">
+                  <Transition name="menu-icon" mode="out-in">
+                    <Menu v-if="!menuOpen" class="w-5 h-5" key="menu" />
+                    <X v-else class="w-5 h-5" key="close" />
+                  </Transition>
+                </button>
+
+                <Teleport to="body">
+                  <Transition name="mobile-menu">
+                    <div 
+                      v-if="menuOpen"
+                      class="fixed top-0 left-0 right-0 bottom-0 z-[9998] block md:hidden bg-base-100"
+                      @click="menuOpen = false">
+                      
+                      <div class="flex flex-col items-center justify-center h-full px-8 space-y-10">
+                        <NuxtLink 
+                          :to="localePath('/')" 
+                          @click="menuOpen = false" 
+                          class="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent hover:scale-110 transition-transform duration-300">
+                          {{ $t('nav.home') }}
+                        </NuxtLink>
+                        <NuxtLink 
+                          :to="localePath('/skills')" 
+                          @click="menuOpen = false" 
+                          class="text-5xl font-bold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent hover:scale-110 transition-transform duration-300">
+                          {{ $t('nav.skills') }}
+                        </NuxtLink>
+                        <NuxtLink 
+                          :to="localePath('/experience')" 
+                          @click="menuOpen = false" 
+                          class="text-5xl font-bold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent hover:scale-110 transition-transform duration-300">
+                          {{ $t('nav.exp') }}
+                        </NuxtLink>
+                        <NuxtLink 
+                          :to="localePath('/projects')" 
+                          @click="menuOpen = false" 
+                          class="text-5xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent hover:scale-110 transition-transform duration-300">
+                          {{ $t('nav.projects') }}
+                        </NuxtLink>
+                        <NuxtLink 
+                          :to="localePath('/contact')" 
+                          @click="menuOpen = false" 
+                          class="text-5xl font-bold bg-gradient-to-r from-accent via-primary to-secondary bg-clip-text text-transparent hover:scale-110 transition-transform duration-300">
+                          {{ $t('nav.contact') }}
+                        </NuxtLink>
+                      </div>
+                    </div>
+                  </Transition>
+                </Teleport>
+              </div>
+            </div>
+          </div>
         </nav>
 
         <main class="flex-1">
@@ -63,31 +125,31 @@
         </NuxtPage>
         </main>
 
-        <footer class="bg-base-300 mt-12">
-        <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-2 text-sm">
-            <CircleUser class="w-5 h-5 shrink-0" />
-            <span>© {{ year }} Stepan Leonov. All rights reserved.</span>
-            </div>
-            <div class="flex gap-3">
-            <a
-                href="https://t.me/peatubaeg"
-                target="_blank"
-                aria-label="Telegram"
-                class="btn btn-ghost btn-circle hover:bg-primary/20 transition"
-            >
-                <Send class="w-5 h-5" />
-            </a>
-            <a
-                href="mailto:leonovstepan.jobs@outlook.com"
-                aria-label="Email"
-                class="btn btn-ghost btn-circle hover:bg-primary/20 transition"
-            >
-                <Mail class="w-5 h-5" />
-            </a>
-            </div>
+    <footer class="bg-base-300 mt-12">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2 text-sm">
+        <CircleUser class="w-5 h-5 shrink-0" />
+        <span>© {{ year }} Stepan Leonov. All rights reserved.</span>
         </div>
-        </footer>
+        <div class="flex gap-3">
+        <a
+            href="https://t.me/peatubaeg"
+            target="_blank"
+            aria-label="Telegram"
+            class="btn btn-ghost btn-circle hover:bg-primary/20 transition"
+        >
+            <Send class="w-5 h-5" />
+        </a>
+        <a
+            href="mailto:leonovstepan.jobs@outlook.com"
+            aria-label="Email"
+            class="btn btn-ghost btn-circle hover:bg-primary/20 transition"
+        >
+            <Mail class="w-5 h-5" />
+        </a>
+        </div>
+    </div>
+    </footer>
     </div>
 </template>
   
@@ -96,7 +158,7 @@ import { ref, onMounted, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { Sun, Moon, Sparkles, Github, CircleUser, Mail, Send, Menu } from 'lucide-vue-next'
+import { Sun, Moon, Sparkles, Github, CircleUser, Mail, Send, Menu, X } from 'lucide-vue-next'
 
 const localePath = useLocalePath()
 
@@ -148,5 +210,24 @@ transition: opacity 0.35s ease, transform 0.35s ease;
 .page-leave-to {
 opacity: 0;
 transform: translateY(-20px);
+}
+
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
+transition: opacity 0.3s ease;
+}
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+opacity: 0;
+}
+
+.menu-icon-enter-active,
+.menu-icon-leave-active {
+transition: all 0.2s ease;
+}
+.menu-icon-enter-from,
+.menu-icon-leave-to {
+opacity: 0;
+transform: rotate(90deg) scale(0.8);
 }
 </style>

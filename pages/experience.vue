@@ -1,45 +1,59 @@
 <template>
-  <section class="max-w-5xl mx-auto py-16">
-    <h2 class="text-4xl font-bold mb-10 text-center">{{ $t('exp.title') }}</h2>
+  <section class="max-w-6xl mx-auto py-16">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-5xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent inline-block">
+        {{ $t('exp.title') }}
+      </h2>
+      <div class="h-1 w-24 bg-gradient-to-r from-primary to-secondary mx-auto mt-4 rounded-full"></div>
+    </div>
+    
     <ul
       class="p-5 lg:p-0 flex flex-col space-y-10 snap-y lg:flex-row
           lg:space-y-0 lg:space-x-12 lg:overflow-x-auto lg:snap-x lg:scroll-pl-6
           scrollable-x"
     >
       <li v-for="key in jobKeys" :key="key"
-        class="relative flex flex-col snap-start lg:min-w-[20rem] py-6"
+        class="relative flex flex-col snap-start lg:min-w-[22rem] py-6"
+        data-aos="fade-right"
       >
 
         <div class="flex items-center lg:flex-col lg:items-start mb-5">
-          <span class="font-semibold text-md lg:mb-4 shrink-0">
+          <span class="font-bold text-md lg:mb-4 shrink-0 text-primary">
             {{ $t(`exp.jobs.${key}.year`) }}
           </span>
           <span
             class="hidden lg:inline-flex items-center justify-center
-                   w-5 h-5 bg-primary text-base-100 rounded-full ml-2 lg:ml-0"
+                   w-8 h-8 bg-gradient-to-br from-primary to-secondary text-base-100 rounded-full ml-2 lg:ml-0 shadow-lg"
           >
-            <Briefcase class="w-3 h-3" />
+            <Briefcase class="w-4 h-4" />
           </span>
         </div>
         <div
-          class="mt-4 lg:mt-0 p-6 bg-base-100 shadow-md rounded-box
-                 ring-1 ring-base-200 w-full h-full"
+          class="group mt-4 lg:mt-0 p-6 bg-gradient-to-br from-base-100 to-base-200/50 shadow-xl rounded-2xl
+                 ring-1 ring-base-300 w-full h-full hover:shadow-2xl transition-all duration-500
+                 hover:-translate-y-1 hover:ring-primary/30 relative overflow-hidden"
         >
-          <h3 class="font-semibold">{{ $t(`exp.jobs.${key}.role`) }}</h3>
-          <p class="text-sm opacity-70">{{ $t(`exp.jobs.${key}.company`) }}</p>
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <h3 class="font-bold text-lg group-hover:text-primary transition-colors">{{ $t(`exp.jobs.${key}.role`) }}</h3>
+            <p class="text-sm opacity-70 mt-1">{{ $t(`exp.jobs.${key}.company`) }}</p>
 
-          <ul class="list-disc list-inside mt-2 space-y-1 text-sm">
-            <li
-              v-for="(dummy, i) in $tm(`exp.jobs.${key}.bullets`).length"
-              :key="i"
-            >
-              {{ $t(`exp.jobs.${key}.bullets[${i}]`) }}
-            </li>
-          </ul>
+            <ul class="space-y-2 mt-4">
+              <li
+                v-for="(dummy, i) in $tm(`exp.jobs.${key}.bullets`).length"
+                :key="i"
+                class="flex gap-2 text-sm"
+              >
+                <span class="text-primary mt-1">▸</span>
+                <span class="opacity-80">{{ $t(`exp.jobs.${key}.bullets[${i}]`) }}</span>
+              </li>
+            </ul>
 
-          <p class="mt-3 text-xs opacity-60 italic">
-            {{ $t('exp.stackLabel') }}: {{ $t(`exp.jobs.${key}.tech`) }}
-          </p>
+            <div class="mt-4 p-3 bg-base-200/50 rounded-lg border border-base-300">
+              <p class="text-xs font-semibold opacity-60 mb-1">{{ $t('exp.stackLabel') }}</p>
+              <p class="text-sm opacity-80">{{ $t(`exp.jobs.${key}.tech`) }}</p>
+            </div>
+          </div>
         </div>
       </li>
     </ul>

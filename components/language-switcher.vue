@@ -8,7 +8,7 @@ function toggle () {
 
 <template>
   <button @click="toggle"
-          class="swap swap-rotate btn btn-ghost btn-circle">
+          class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-base-200/50 transition-all group font-semibold text-sm">
     {{ locale === 'en' ? 'RU' : 'EN' }}
   </button>
 </template>
