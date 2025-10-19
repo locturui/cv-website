@@ -32,13 +32,12 @@ pnpm install
 
 # 3. Set up environment variables
 cp .env.example .env
-# Edit .env with your database credentials
 
 # 4. Set up database
-pnpm db:push       # Push schema to database
-pnpm db:seed       # Seed with initial data
+pnpm db:push
+pnpm db:seed
 
-# 5. Fire up the dev server
+# 5. Start the dev server
 pnpm dev           
 ```
 Open **[http://localhost:3000](http://localhost:3000)** 

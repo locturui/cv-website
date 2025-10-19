@@ -10,6 +10,8 @@ export const projects = pgTable('projects', {
   descriptionEn: text('description_en').notNull(),
   descriptionRu: text('description_ru').notNull(),
   link: text('link'),
+  githubLink: text('github_link'),
+  deployLink: text('deploy_link'),
   image: text('image').notNull(),
   images: text('images').notNull(),
   stack: text('stack').notNull(),

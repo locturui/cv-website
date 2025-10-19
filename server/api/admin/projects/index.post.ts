@@ -26,6 +26,8 @@ export default defineEventHandler(async (event) => {
       descriptionEn: body.descriptionEn || '',
       descriptionRu: body.descriptionRu || '',
       link: body.link || null,
+      githubLink: body.githubLink || null,
+      deployLink: body.deployLink || null,
       image: body.image || '',
       images: JSON.stringify(body.images || []),
       stack: JSON.stringify(body.stack || [])

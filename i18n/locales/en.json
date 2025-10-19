@@ -75,7 +75,8 @@
         "modal": {
             "about": "About the Project",
             "tech": "Technologies Used",
-            "viewProject": "View Project",
+            "viewGithub": "View on GitHub",
+            "viewDemo": "View Live Demo",
             "close": "Close"
         }
     },

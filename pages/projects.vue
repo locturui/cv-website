@@ -37,6 +37,8 @@ interface Project {
   desc: string
   description: string
   link: string
+  githubLink: string
+  deployLink: string
   image: string
   images: string[]
   stack: string[]

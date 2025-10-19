@@ -31,6 +31,8 @@ The project was built with a focus on scalability and user experience, implement
 
 Проект был создан с акцентом на масштабируемость и пользовательский опыт, с применением лучших практик управления состоянием через Pinia и адаптивного дизайна с Tailwind CSS.`,
     link: 'https://github.com/locturui/alumni',
+    githubLink: 'https://github.com/locturui/alumni',
+    deployLink: null,
     image: '/img/alumni.png',
     images: JSON.stringify([
       'https://placehold.co/1200x800/4F46E5/FFFFFF?text=AlumniPortal+Dashboard',
@@ -67,6 +69,8 @@ The website emphasizes visual appeal and ease of use, with a focus on showcasing
 
 Сайт делает акцент на визуальной привлекательности и удобстве использования, фокусируясь на демонстрации работ мастера через качественные изображения и чистые макеты. Построен с использованием Composition API Vue 3 для оптимальной производительности.`,
     link: 'https://github.com/locturui/artpolly-vue',
+    githubLink: 'https://github.com/locturui/artpolly-vue',
+    deployLink: null,
     image: '/img/artpolly.png',
     images: JSON.stringify([
       'https://placehold.co/1200x800/EC4899/FFFFFF?text=Artpolly+Homepage',
@@ -107,6 +111,8 @@ The system is built with modern web technologies, emphasizing performance and sc
 
 Система построена с использованием современных веб-технологий, с акцентом на производительность и масштабируемость. Использует Nuxt 3 для возможностей SSR и Pinia для эффективного управления состоянием в сложных процессах бронирования.`,
     link: '',
+    githubLink: null,
+    deployLink: null,
     image: 'https://placehold.co/400x250?text=CRM',
     images: JSON.stringify([
       'https://placehold.co/1200x800/EF4444/FFFFFF?text=Booking+Dashboard',

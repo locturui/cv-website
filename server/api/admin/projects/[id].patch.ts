@@ -28,6 +28,8 @@ export default defineEventHandler(async (event) => {
     if (body.descriptionEn !== undefined) updateData.descriptionEn = body.descriptionEn
     if (body.descriptionRu !== undefined) updateData.descriptionRu = body.descriptionRu
     if (body.link !== undefined) updateData.link = body.link
+    if (body.githubLink !== undefined) updateData.githubLink = body.githubLink
+    if (body.deployLink !== undefined) updateData.deployLink = body.deployLink
     if (body.image !== undefined) updateData.image = body.image
     if (body.images !== undefined) updateData.images = JSON.stringify(body.images)
     if (body.stack !== undefined) updateData.stack = JSON.stringify(body.stack)

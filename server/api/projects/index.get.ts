@@ -15,6 +15,8 @@ export default defineEventHandler(async (event) => {
       desc: locale === 'ru' ? project.descRu : project.descEn,
       description: locale === 'ru' ? project.descriptionRu : project.descriptionEn,
       link: project.link || '',
+      githubLink: project.githubLink || '',
+      deployLink: project.deployLink || '',
       image: project.image,
       images: JSON.parse(project.images),
       stack: JSON.parse(project.stack)
