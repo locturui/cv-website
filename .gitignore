@@ -12,8 +12,13 @@ node_modules
 # Logs
 logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
 
-# Misc
+# OS
 .DS_Store
 .fleet
 .idea
@@ -22,3 +27,10 @@ logs
 .env
 .env.*
 !.env.example
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+server/database/migrations/*
+!server/database/migrations/.gitkeep

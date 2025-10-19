@@ -7,7 +7,12 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "tsx server/database/seed.ts"
   },
   "dependencies": {
     "@nuxt/icon": "1.13.0",
@@ -15,11 +20,14 @@
     "@nuxtjs/i18n": "^9.5.4",
     "@tailwindcss/vite": "^4.1.5",
     "@types/aos": "^3.0.7",
+    "@vercel/blob": "^2.0.0",
     "aos": "^2.3.4",
     "autoprefixer": "^10.4.21",
+    "drizzle-orm": "^0.44.6",
     "lucide-vue-next": "^0.508.0",
     "nuxt": "^3.17.2",
     "postcss": "^8.5.3",
+    "postgres": "^3.4.7",
     "tailwindcss": "^4.1.5",
     "vue": "^3.5.13",
     "vue-router": "^4.5.1"
@@ -27,6 +35,9 @@
   "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39",
   "devDependencies": {
     "@intlify/unplugin-vue-i18n": "^6.0.8",
-    "daisyui": "^5.0.35"
+    "daisyui": "^5.0.35",
+    "dotenv": "^17.2.3",
+    "drizzle-kit": "^0.31.5",
+    "tsx": "^4.20.6"
   }
 }

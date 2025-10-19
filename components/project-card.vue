@@ -1,8 +1,7 @@
 <template>
-  <a
-    :href="p.link"
-    target="_blank"
-    class="card bg-base-100 hover:-translate-y-2 hover:shadow-xl transition">
+  <button
+    @click="$emit('openProject', p)"
+    class="card bg-base-100 hover:-translate-y-2 hover:shadow-xl transition cursor-pointer text-left">
     <figure>
       <img :src="p.image" :alt="p.title"
            class="aspect-video object-cover" />
@@ -17,12 +16,16 @@
           class="badge badge-outline">{{ tag }}</div>
       </div>
     </div>
-  </a>
+  </button>
 </template>
 
 <script setup lang="ts">
 defineProps<{ p: {
   title: string; desc: string; link?: string;
-  image: string; stack: string[];
+  image: string; images: string[]; description: string; stack: string[];
 } }>()
+
+defineEmits<{
+  openProject: [project: any]
+}>()
 </script>

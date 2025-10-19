@@ -70,28 +70,13 @@
     },
     "proj": {
         "title": "Проекты",
-        "items": {
-            "alumni": {
-                "title": "AlumniPortal",
-                "desc": "Портал для выпускников Университета Иннополис, где они могут общаться и помогать нынешним студентам.",
-                "link": "https://github.com/locturui/alumni",
-                "image": "/img/alumni.png",
-                "stack": ["Vue", "Nuxt", "Pinia", "Tailwind CSS"]
-            },
-            "artpolly": {
-                "title": "Artpolly Studio",
-                "desc": "Сайт керамической студии с галереей и интернет‑магазином.",
-                "link": "https://github.com/locturui/artpolly-vue",
-                "image": "/img/artpolly.png",
-                "stack": ["Vue", "Pinia", "Tailwind CSS"]
-            },
-            "excursion": {
-                "title": "ExcursionCRM – разработка",
-                "desc": "CRM‑система для планирования и управления экскурсиями в городе Иннополис.",
-                "link": "",
-                "image": "https://placehold.co/400x250?text=CRM",
-                "stack": ["Vue", "Nuxt", "Pinia", "Tailwind CSS", "daisyUI"]
-            }
+        "error": "Не удалось загрузить проекты",
+        "retry": "Попробовать снова",
+        "modal": {
+            "about": "О проекте",
+            "tech": "Используемые технологии",
+            "viewProject": "Смотреть проект",
+            "close": "Закрыть"
         }
     },
     "cta": {
