@@ -3,7 +3,7 @@
         <nav class="sticky top-0 z-[9999] px-4 py-3">
           <div class="max-w-7xl mx-auto">
             <div class="flex items-center justify-between gap-4 px-4 py-2 rounded-2xl backdrop-blur-2xl">
-              <NuxtLink to="/" :class="['flex items-center gap-2 px-3 py-2 rounded-xl transition-all duration-300 group', menuOpen ? 'opacity-0 pointer-events-none' : '']">
+              <NuxtLink :to="localePath('/')" :class="['flex items-center gap-2 px-3 py-2 rounded-xl transition-all duration-300 group', menuOpen ? 'opacity-0 pointer-events-none' : '']">
                 <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
                   <span class="text-white font-bold text-sm">SL</span>
                 </div>

@@ -7,14 +7,32 @@
       <div class="h-1 w-24 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
     </div>
 
-    <div class="space-y-12">
+    <div v-if="pending" class="space-y-12">
+      <div v-for="section in ['frontend', 'backend', 'devops']" :key="section">
+        <div class="h-8 w-64 bg-base-300 rounded-lg mb-6 animate-pulse"></div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          <div v-for="i in 8" :key="i" 
+               class="flex flex-col items-center gap-3 p-6 bg-base-100 rounded-2xl border-2 border-base-300">
+            <div class="w-16 h-16 bg-base-300 rounded-xl animate-pulse"></div>
+            <div class="h-4 w-20 bg-base-300 rounded animate-pulse"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-else-if="error" class="text-center py-10">
+      <p class="text-error mb-4">Failed to load skills</p>
+      <button @click="refresh()" class="custom-btn custom-btn-primary">Try Again</button>
+    </div>
+
+    <div v-else class="space-y-12">
       <div data-aos="fade-up">
         <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
           <div class="w-1 h-8 bg-gradient-to-b from-primary to-primary/30 rounded-full"></div>
           Frontend & Design
         </h3>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          <div v-for="skill in frontend" :key="skill.name" 
+          <div v-for="skill in skills?.frontend" :key="skill.name" 
                class="group flex flex-col items-center gap-3 p-6 bg-base-100 rounded-2xl border-2 border-primary/20 hover:border-primary hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
             <div class="w-16 h-16 flex items-center justify-center rounded-xl bg-primary/10 group-hover:bg-primary group-hover:scale-110 transition-all">
               <Icon v-if="skill.icon" :name="skill.icon" class="w-10 h-10 text-primary group-hover:text-primary-content transition-colors" />
@@ -31,7 +49,7 @@
           Backend & Database
         </h3>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          <div v-for="skill in backend" :key="skill.name" 
+          <div v-for="skill in skills?.backend" :key="skill.name" 
                class="group flex flex-col items-center gap-3 p-6 bg-base-100 rounded-2xl border-2 border-secondary/20 hover:border-secondary hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
             <div class="w-16 h-16 flex items-center justify-center rounded-xl bg-secondary/10 group-hover:bg-secondary group-hover:scale-110 transition-all">
               <Icon v-if="skill.icon" :name="skill.icon" class="w-10 h-10 text-secondary group-hover:text-secondary-content transition-colors" />
@@ -48,7 +66,7 @@
           DevOps & Soft Skills
         </h3>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          <div v-for="skill in devops" :key="skill.name" 
+          <div v-for="skill in skills?.devops" :key="skill.name" 
                class="group flex flex-col items-center gap-3 p-6 bg-base-100 rounded-2xl border-2 border-accent/20 hover:border-accent hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
             <div class="w-16 h-16 flex items-center justify-center rounded-xl bg-accent/10 group-hover:bg-accent group-hover:scale-110 transition-all">
               <Icon v-if="skill.icon" :name="skill.icon" class="w-10 h-10 text-accent group-hover:text-accent-content transition-colors" />
@@ -65,38 +83,21 @@
 <script setup lang="ts">
 import { Code2, Database, Sparkles } from 'lucide-vue-next'
 
-const frontend = [
-  { name: 'HTML5', icon: 'skill-icons:html' },
-  { name: 'CSS3', icon: 'skill-icons:css' },
-  { name: 'JavaScript', icon: 'skill-icons:javascript' },
-  { name: 'TypeScript', icon: 'skill-icons:typescript' },
-  { name: 'Vue.js', icon: 'skill-icons:vuejs-dark' },
-  { name: 'Nuxt', icon: 'skill-icons:nuxtjs-dark' },
-  { name: 'Vite', icon: 'skill-icons:vite-dark' },
-  { name: 'Tailwind CSS', icon: 'skill-icons:tailwindcss-dark' },
-  { name: 'Sass', icon: 'skill-icons:sass' },
-  { name: 'React', icon: 'skill-icons:react-dark' }
-]
+interface Skill {
+  id: number
+  name: string
+  icon: string
+  category: string
+  order: number
+}
 
-const backend = [
-  { name: 'Go', icon: 'skill-icons:golang' },
-  { name: 'PostgreSQL', icon: 'skill-icons:postgresql-dark' },
-  { name: 'Node.js', icon: 'skill-icons:nodejs-dark' },
-  { name: 'MongoDB', icon: 'skill-icons:mongodb' },
-  { name: 'Redis', icon: 'skill-icons:redis-dark' },
-  { name: 'GraphQL', icon: 'skill-icons:graphql-dark' }
-]
+interface SkillsData {
+  frontend: Skill[]
+  backend: Skill[]
+  devops: Skill[]
+}
 
-const devops = [
-  { name: 'Docker', icon: 'skill-icons:docker' },
-  { name: 'Git', icon: 'skill-icons:git' },
-  { name: 'GitHub', icon: 'skill-icons:github-dark' },
-  { name: 'Vercel', icon: 'skill-icons:vercel-dark' },
-  { name: 'Linux', icon: 'skill-icons:linux-dark' },
-  { name: 'VSCode', icon: 'skill-icons:vscode-dark' },
-  { name: 'Figma', icon: 'skill-icons:figma-dark' },
-  { name: 'Postman', icon: 'skill-icons:postman' }
-]
+const { data: skills, pending, error, refresh } = useFetch<SkillsData>('/api/skills')
 </script>
 
 
