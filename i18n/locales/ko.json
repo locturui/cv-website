@@ -1,0 +1,104 @@
+{
+    "nav": {
+        "name": "Stepan Leonov",
+        "home": "홈",
+        "skills": "기술",
+        "exp": "경력",
+        "projects": "프로젝트",
+        "contact": "연락처"
+    },
+    "hero": {
+        "hi": "안녕하세요,",
+        "bio": "풀스택 개발자입니다. UI부터 API까지 웹 애플리케이션을 구축합니다. 프론트엔드는 Vue와 Nuxt로 작업하고, 백엔드 통합을 처리하며, 빠르고 사용자 친화적인 것을 만드는 데 집중합니다."
+    },
+    "projects": {
+        "btn": "프로젝트 보기"
+    },
+    "stats": {
+        "years": "코딩 경력",
+        "bugs": "수정한 버그",
+        "coffee": "마신 커피 잔"
+    },
+    "skills": {
+        "title": "기술",
+        "error": "기술 목록을 불러오지 못했습니다",
+        "retry": "다시 시도",
+        "frontend": "프론트엔드",
+        "backend": "백엔드",
+        "devops": "DevOps 및 소프트 스킬",
+        "viewDetails": "자세히 보기 →"
+    },
+    "exp": {
+        "title": "경력",
+        "stackLabel": "기술 스택",
+        "error": "경력을 불러오지 못했습니다",
+        "retry": "다시 시도",
+        "jobs": {
+            "excursioncrm": {
+                "year": "2025년 4월 – 현재",
+                "role": "프론트엔드 개발자",
+                "company": "ExcursionCRM · 인노폴리스 대학교",
+                "bullets": [
+                    "Nuxt 3와 Pinia로 예약 및 일정 UI 개발",
+                    "동적 폼 빌더 및 인터랙티브 지도 뷰 구현"
+                ],
+                "tech": "Vue 3, Nuxt 3, Tailwind CSS / daisyUI, Pinia"
+            },
+            "alumniportal": {
+                "year": "2024년 6월 – 2024년 7월",
+                "role": "프론트엔드 개발자",
+                "company": "AlumniPortal · 인노폴리스 대학교",
+                "bullets": [
+                    "포털 레이아웃, 인증 흐름, API 통합 설계",
+                    "다른 개발자 2명 멘토링"
+                ],
+                "tech": "Vue 3, Tailwind CSS, Pinia"
+            },
+            "qpd": {
+                "year": "2022년 1월 – 2022년 8월",
+                "role": "주니어 프론트엔드 개발자",
+                "company": "QPD (Vodafone 프로젝트)",
+                "bullets": [
+                    "내부 CRM용 React + TypeScript 인터페이스 구축",
+                    "대용량 데이터 테이블 최적화 및 커스텀 UI 컴포넌트 제작"
+                ],
+                "tech": "React, TypeScript, Redux, REST API"
+            },
+            "elbrus": {
+                "year": "2021년 7월 – 2021년 12월",
+                "role": "풀스택 개발 인턴 (부트캠프)",
+                "company": "Elbrus Coding Bootcamp",
+                "bullets": [
+                    "ECO‑FRIEND: 지도 기반 재활용 웹 앱 (React + Node)",
+                    "MEBEL CRM: 가구 회사 CRM (Handlebars + Node)"
+                ],
+                "tech": "React, Node.js, MongoDB, PostgreSQL"
+            }
+        }
+    },
+    "proj": {
+        "title": "프로젝트",
+        "error": "프로젝트를 불러오지 못했습니다",
+        "retry": "다시 시도",
+        "modal": {
+            "about": "프로젝트 소개",
+            "tech": "사용 기술",
+            "viewGithub": "GitHub에서 보기",
+            "viewDemo": "라이브 데모 보기",
+            "close": "닫기",
+            "fullscreenHint": "전체 화면으로 보려면 클릭하세요",
+            "imageAlt": "{title} - 이미지 {index}",
+            "thumbnailAlt": "썸네일 {index}"
+        }
+    },
+    "cta": {
+        "title": "함께 일해요",
+        "lead": "제 기술을 활용할 수 있는 아이디어나 포지션이 있으신가요?",
+        "add": "메시지를 보내주세요 — 언제든 대화 환영합니다!",
+        "email": "이메일",
+        "telegram": "텔레그램",
+        "github": "GitHub",
+        "kakao": "카카오톡"
+    }
+}
+

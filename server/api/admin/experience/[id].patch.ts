@@ -15,14 +15,23 @@ export default defineEventHandler(async (event) => {
 
     if (body.key !== undefined) updates.key = body.key
     if (body.year !== undefined) updates.year = body.year
+    if (body.startMonth !== undefined) updates.startMonth = body.startMonth
+    if (body.startYear !== undefined) updates.startYear = body.startYear
+    if (body.endMonth !== undefined) updates.endMonth = body.endMonth
+    if (body.endYear !== undefined) updates.endYear = body.endYear
+    if (body.isPresent !== undefined) updates.isPresent = body.isPresent
     if (body.roleEn !== undefined) updates.roleEn = body.roleEn
     if (body.roleRu !== undefined) updates.roleRu = body.roleRu
+    if (body.roleKo !== undefined) updates.roleKo = body.roleKo
     if (body.companyEn !== undefined) updates.companyEn = body.companyEn
     if (body.companyRu !== undefined) updates.companyRu = body.companyRu
+    if (body.companyKo !== undefined) updates.companyKo = body.companyKo
     if (body.bulletsEn !== undefined) updates.bulletsEn = body.bulletsEn
     if (body.bulletsRu !== undefined) updates.bulletsRu = body.bulletsRu
+    if (body.bulletsKo !== undefined) updates.bulletsKo = body.bulletsKo
     if (body.techEn !== undefined) updates.techEn = body.techEn
     if (body.techRu !== undefined) updates.techRu = body.techRu
+    if (body.techKo !== undefined) updates.techKo = body.techKo
     if (body.order !== undefined) updates.order = body.order
 
     const [updated] = await db

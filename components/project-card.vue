@@ -7,7 +7,7 @@
            class="aspect-video object-cover transition-transform duration-700 group-hover:scale-110" />
       <div class="absolute inset-0 bg-gradient-to-t from-base-300/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       <div class="absolute top-3 right-3 badge badge-primary badge-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0">
-        View Details →
+        {{ $t('skills.viewDetails') }}
       </div>
     </figure>
     <div class="card-body">

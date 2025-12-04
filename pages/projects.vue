@@ -28,8 +28,8 @@
     </div>
 
     <div v-else-if="error" class="text-center py-10">
-      <p class="text-error mb-4">{{ $t('proj.error') || 'Failed to load projects' }}</p>
-      <button @click="refresh()" class="custom-btn custom-btn-primary">{{ $t('proj.retry') || 'Try Again' }}</button>
+      <p class="text-error mb-4">{{ $t('proj.error') }}</p>
+      <button @click="refresh()" class="custom-btn custom-btn-primary">{{ $t('proj.retry') }}</button>
     </div>
 
     <div v-else class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 pl-2 pr-2 md:pl-0 md:pr-0">

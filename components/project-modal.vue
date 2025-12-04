@@ -14,22 +14,22 @@
 
         <div class="flex flex-col lg:flex-row gap-8">
           <div class="lg:w-3/5 flex-shrink-0">
-            <div class="relative rounded-2xl overflow-hidden mb-4 shadow-2xl ring-1 ring-base-300 group">
+            <div class="relative rounded-2xl overflow-hidden mb-4 shadow-2xl ring-1 ring-base-300 group cursor-pointer" @click="openFullscreen">
               <img 
                 :src="project.images[currentImageIndex]" 
-                :alt="`${project.title} - Image ${currentImageIndex + 1}`"
-                class="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-contain sm:object-cover bg-base-200 transition-transform duration-700"
+                :alt="$t('proj.modal.imageAlt', { title: project.title, index: currentImageIndex + 1 })"
+                class="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-contain bg-base-200 transition-transform duration-700"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
               <template v-if="project.images.length > 1">
                 <button 
-                  @click="previousImage"
+                  @click.stop="previousImage"
                   class="btn btn-circle btn-sm absolute left-4 top-1/2 -translate-y-1/2 bg-base-100/90 backdrop-blur-md hover:bg-primary hover:scale-110 transition-all duration-300 border-0 shadow-lg">
                   ❮
                 </button>
                 <button 
-                  @click="nextImage"
+                  @click.stop="nextImage"
                   class="btn btn-circle btn-sm absolute right-4 top-1/2 -translate-y-1/2 bg-base-100/90 backdrop-blur-md hover:bg-primary hover:scale-110 transition-all duration-300 border-0 shadow-lg">
                   ❯
                 </button>
@@ -38,6 +38,10 @@
                   {{ currentImageIndex + 1 }} / {{ project.images.length }}
                 </div>
               </template>
+              
+              <div class="absolute top-4 left-4 bg-base-100/90 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg border border-base-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {{ $t('proj.modal.fullscreenHint') }}
+              </div>
             </div>
 
             <div v-if="project.images.length > 1" class="flex gap-2 sm:gap-3 overflow-x-auto py-6 px-8 -mx-8 relative z-10">
@@ -51,7 +55,7 @@
                 ]">
                 <img 
                   :src="image" 
-                  :alt="`Thumbnail ${index + 1}`"
+                  :alt="$t('proj.modal.thumbnailAlt', { index: index + 1 })"
                   class="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-cover"
                 />
               </button>
@@ -113,9 +117,58 @@
       </div>
     </div>
     <form method="dialog" class="modal-backdrop">
-      <button @click="closeModal">close</button>
+      <button @click="closeModal">{{ $t('proj.modal.close') }}</button>
     </form>
   </dialog>
+
+  <Teleport to="body">
+    <div 
+      v-if="showFullscreen" 
+      ref="fullscreenRef"
+      class="fixed inset-0 bg-black/95 backdrop-blur-sm flex items-center justify-center"
+      style="z-index: 99999 !important; position: fixed !important; pointer-events: auto !important;"
+      @click="handleFullscreenClick"
+    >
+      <button 
+        @click.stop="closeFullscreen"
+        class="absolute top-4 right-4 z-[100000] btn btn-circle btn-lg bg-base-100/90 hover:bg-error hover:text-error-content border-0 shadow-2xl transition-all duration-300 hover:rotate-90"
+        style="pointer-events: auto !important; z-index: 100000 !important;"
+      >
+        ✕
+      </button>
+      
+      <div class="relative w-full h-full flex items-center justify-center p-4" @click.stop style="pointer-events: auto;">
+        <img 
+          :src="project?.images[fullscreenImageIndex]" 
+          :alt="project ? $t('proj.modal.imageAlt', { title: project.title, index: fullscreenImageIndex + 1 }) : ''"
+          class="max-w-full max-h-full object-contain"
+          @click.stop
+          style="pointer-events: none;"
+        />
+        
+        <template v-if="project && project.images.length > 1">
+          <button 
+            @click.stop="previousFullscreenImage"
+            class="absolute left-4 top-1/2 -translate-y-1/2 z-[100000] btn btn-circle btn-lg bg-base-100/90 backdrop-blur-md hover:bg-primary hover:scale-110 transition-all duration-300 border-0 shadow-2xl"
+            style="pointer-events: auto !important; z-index: 100000 !important;"
+          >
+            ❮
+          </button>
+          <button 
+            @click.stop="nextFullscreenImage"
+            class="absolute right-4 top-1/2 -translate-y-1/2 z-[100000] btn btn-circle btn-lg bg-base-100/90 backdrop-blur-md hover:bg-primary hover:scale-110 transition-all duration-300 border-0 shadow-2xl"
+            style="pointer-events: auto !important; z-index: 100000 !important;"
+          >
+            ❯
+          </button>
+          
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-base-100/90 backdrop-blur-md px-6 py-3 rounded-full text-sm font-semibold shadow-2xl border border-base-300 pointer-events-none">
+            {{ fullscreenImageIndex + 1 }} / {{ project.images.length }}
+          </div>
+        </template>
+      </div>
+    </div>
+  </Teleport>
 </template>
 
 <script setup lang="ts">
@@ -132,6 +185,9 @@ interface Project {
 const dialog = ref<HTMLDialogElement | null>(null)
 const project = ref<Project | null>(null)
 const currentImageIndex = ref(0)
+const showFullscreen = ref(false)
+const fullscreenImageIndex = ref(0)
+const fullscreenRef = ref<HTMLDivElement | null>(null)
 
 const openModal = (p: Project) => {
   project.value = p
@@ -158,6 +214,111 @@ const previousImage = () => {
     currentImageIndex.value = project.value.images.length - 1
   }
 }
+
+const openFullscreen = () => {
+  if (project.value) {
+    fullscreenImageIndex.value = currentImageIndex.value
+    showFullscreen.value = true
+    document.body.style.overflow = 'hidden'
+    if (dialog.value) {
+      dialog.value.close()
+      nextTick(() => {
+        const backdrop = document.querySelector('.modal-backdrop')
+        if (backdrop) {
+          (backdrop as HTMLElement).style.display = 'none'
+          ;(backdrop as HTMLElement).style.pointerEvents = 'none'
+        }
+        const style = document.createElement('style')
+        style.id = 'fullscreen-gallery-override'
+        style.textContent = `
+          dialog::backdrop {
+            display: none !important;
+            pointer-events: none !important;
+            opacity: 0 !important;
+          }
+          dialog:not([open])::backdrop {
+            display: none !important;
+          }
+        `
+        document.head.appendChild(style)
+      })
+    }
+    nextTick(() => {
+      if (fullscreenRef.value) {
+        fullscreenRef.value.style.zIndex = '99999'
+        fullscreenRef.value.style.pointerEvents = 'auto'
+      }
+    })
+  }
+}
+
+const handleFullscreenClick = (e: MouseEvent) => {
+  if (e.target === e.currentTarget) {
+    closeFullscreen()
+  }
+}
+
+const closeFullscreen = () => {
+  showFullscreen.value = false
+  document.body.style.overflow = ''
+  const overrideStyle = document.getElementById('fullscreen-gallery-override')
+  if (overrideStyle) {
+    overrideStyle.remove()
+  }
+  nextTick(() => {
+    if (dialog.value && project.value) {
+      const backdrop = document.querySelector('.modal-backdrop')
+      if (backdrop) {
+        (backdrop as HTMLElement).style.display = ''
+        ;(backdrop as HTMLElement).style.pointerEvents = ''
+      }
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (dialog.value && project.value) {
+            dialog.value.showModal()
+          }
+        })
+      })
+    }
+  })
+}
+
+const nextFullscreenImage = () => {
+  if (project.value && fullscreenImageIndex.value < project.value.images.length - 1) {
+    fullscreenImageIndex.value++
+  } else if (project.value) {
+    fullscreenImageIndex.value = 0
+  }
+}
+
+const previousFullscreenImage = () => {
+  if (project.value && fullscreenImageIndex.value > 0) {
+    fullscreenImageIndex.value--
+  } else if (project.value) {
+    fullscreenImageIndex.value = project.value.images.length - 1
+  }
+}
+
+const handleKeyDown = (e: KeyboardEvent) => {
+  if (showFullscreen.value) {
+    if (e.key === 'ArrowLeft') {
+      previousFullscreenImage()
+    } else if (e.key === 'ArrowRight') {
+      nextFullscreenImage()
+    } else if (e.key === 'Escape') {
+      closeFullscreen()
+    }
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyDown)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeyDown)
+  document.body.style.overflow = ''
+})
 
 defineExpose({ openModal })
 </script>

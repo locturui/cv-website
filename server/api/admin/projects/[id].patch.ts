@@ -23,10 +23,13 @@ export default defineEventHandler(async (event) => {
     if (body.key !== undefined) updateData.key = body.key
     if (body.titleEn !== undefined) updateData.titleEn = body.titleEn
     if (body.titleRu !== undefined) updateData.titleRu = body.titleRu
+    if (body.titleKo !== undefined) updateData.titleKo = body.titleKo
     if (body.descEn !== undefined) updateData.descEn = body.descEn
     if (body.descRu !== undefined) updateData.descRu = body.descRu
+    if (body.descKo !== undefined) updateData.descKo = body.descKo
     if (body.descriptionEn !== undefined) updateData.descriptionEn = body.descriptionEn
     if (body.descriptionRu !== undefined) updateData.descriptionRu = body.descriptionRu
+    if (body.descriptionKo !== undefined) updateData.descriptionKo = body.descriptionKo
     if (body.link !== undefined) updateData.link = body.link
     if (body.githubLink !== undefined) updateData.githubLink = body.githubLink
     if (body.deployLink !== undefined) updateData.deployLink = body.deployLink

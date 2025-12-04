@@ -39,8 +39,8 @@
     </ul>
 
     <div v-else-if="error" class="text-center py-10">
-      <p class="text-error mb-4">Failed to load experience</p>
-      <button @click="refresh()" class="custom-btn custom-btn-primary">Try Again</button>
+      <p class="text-error mb-4">{{ $t('exp.error') }}</p>
+      <button @click="refresh()" class="custom-btn custom-btn-primary">{{ $t('exp.retry') }}</button>
     </div>
 
     <ul

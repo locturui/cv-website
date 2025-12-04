@@ -56,22 +56,48 @@
         </div>
 
         <form @submit.prevent="saveExperience" class="space-y-4">
-          <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="label">
+              <span class="label-text">Key</span>
+            </label>
+            <input v-model="form.key" type="text" class="input input-bordered w-full" required>
+          </div>
+
+          <div class="space-y-4">
             <div>
               <label class="label">
-                <span class="label-text">Key</span>
+                <span class="label-text">Start Date</span>
               </label>
-              <input v-model="form.key" type="text" class="input input-bordered w-full" required>
+              <div class="grid grid-cols-2 gap-4">
+                <select v-model.number="form.startMonth" class="select select-bordered w-full" required>
+                  <option value="">Month</option>
+                  <option v-for="(month, index) in months" :key="index" :value="index + 1">{{ month }}</option>
+                </select>
+                <input v-model.number="form.startYear" type="number" class="input input-bordered w-full" placeholder="Year" min="2000" max="2100" required>
+              </div>
             </div>
+
             <div>
               <label class="label">
-                <span class="label-text">Year</span>
+                <span class="label-text">End Date</span>
               </label>
-              <input v-model="form.year" type="text" class="input input-bordered w-full" required>
+              <div class="form-control">
+                <label class="label cursor-pointer justify-start gap-4">
+                  <input type="checkbox" v-model="form.isPresent" class="checkbox checkbox-primary" />
+                  <span class="label-text">Present / Current</span>
+                </label>
+              </div>
+              <div v-if="!form.isPresent" class="grid grid-cols-2 gap-4 mt-2">
+                <select v-model.number="form.endMonth" class="select select-bordered w-full">
+                  <option value="">Month</option>
+                  <option v-for="(month, index) in months" :key="index" :value="index + 1">{{ month }}</option>
+                </select>
+                <input v-model.number="form.endYear" type="number" class="input input-bordered w-full" placeholder="Year" min="2000" max="2100">
+              </div>
             </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-3 gap-4">
             <div>
               <label class="label">
                 <span class="label-text">Role (EN)</span>
@@ -84,9 +110,15 @@
               </label>
               <input v-model="form.roleRu" type="text" class="input input-bordered w-full" required>
             </div>
+            <div>
+              <label class="label">
+                <span class="label-text">Role (KO)</span>
+              </label>
+              <input v-model="form.roleKo" type="text" class="input input-bordered w-full">
+            </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-3 gap-4">
             <div>
               <label class="label">
                 <span class="label-text">Company (EN)</span>
@@ -99,9 +131,15 @@
               </label>
               <input v-model="form.companyRu" type="text" class="input input-bordered w-full" required>
             </div>
+            <div>
+              <label class="label">
+                <span class="label-text">Company (KO)</span>
+              </label>
+              <input v-model="form.companyKo" type="text" class="input input-bordered w-full">
+            </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-3 gap-4">
             <div>
               <label class="label">
                 <span class="label-text">Tech (EN)</span>
@@ -113,6 +151,12 @@
                 <span class="label-text">Tech (RU)</span>
               </label>
               <input v-model="form.techRu" type="text" class="input input-bordered w-full" required>
+            </div>
+            <div>
+              <label class="label">
+                <span class="label-text">Tech (KO)</span>
+              </label>
+              <input v-model="form.techKo" type="text" class="input input-bordered w-full">
             </div>
           </div>
 
@@ -128,6 +172,13 @@
               <span class="label-text">Bullets (RU) - One per line</span>
             </label>
             <textarea v-model="bulletsRuText" class="textarea textarea-bordered w-full h-24" required></textarea>
+          </div>
+
+          <div>
+            <label class="label">
+              <span class="label-text">Bullets (KO) - One per line</span>
+            </label>
+            <textarea v-model="bulletsKoText" class="textarea textarea-bordered w-full h-24"></textarea>
           </div>
 
           <div>
@@ -161,14 +212,23 @@ interface Experience {
   id: number
   key: string
   year: string
+  startMonth?: number | null
+  startYear?: number | null
+  endMonth?: number | null
+  endYear?: number | null
+  isPresent?: number | null
   roleEn: string
   roleRu: string
+  roleKo?: string
   companyEn: string
   companyRu: string
+  companyKo?: string
   bulletsEn: string
   bulletsRu: string
+  bulletsKo?: string
   techEn: string
   techRu: string
+  techKo?: string
   order: number
 }
 
@@ -185,28 +245,62 @@ const showAddForm = ref(false)
 const editingExperience = ref<Experience | null>(null)
 const saving = ref(false)
 
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
 const form = ref({
   key: '',
   year: '',
+  startMonth: null as number | null,
+  startYear: null as number | null,
+  endMonth: null as number | null,
+  endYear: null as number | null,
+  isPresent: 0 as number,
   roleEn: '',
   roleRu: '',
+  roleKo: '',
   companyEn: '',
   companyRu: '',
+  companyKo: '',
   bulletsEn: '',
   bulletsRu: '',
+  bulletsKo: '',
   techEn: '',
   techRu: '',
+  techKo: '',
   order: 1
 })
 
 const bulletsEnText = ref('')
 const bulletsRuText = ref('')
+const bulletsKoText = ref('')
 
 function editExperience(exp: Experience) {
   editingExperience.value = exp
-  form.value = { ...exp }
+  form.value = {
+    key: exp.key,
+    year: exp.year,
+    startMonth: exp.startMonth || null,
+    startYear: exp.startYear || null,
+    endMonth: exp.endMonth || null,
+    endYear: exp.endYear || null,
+    isPresent: exp.isPresent || 0,
+    roleEn: exp.roleEn,
+    roleRu: exp.roleRu,
+    roleKo: exp.roleKo || '',
+    companyEn: exp.companyEn,
+    companyRu: exp.companyRu,
+    companyKo: exp.companyKo || '',
+    bulletsEn: exp.bulletsEn,
+    bulletsRu: exp.bulletsRu,
+    bulletsKo: exp.bulletsKo || '',
+    techEn: exp.techEn,
+    techRu: exp.techRu,
+    techKo: exp.techKo || '',
+    order: exp.order
+  }
   bulletsEnText.value = JSON.parse(exp.bulletsEn).join('\n')
   bulletsRuText.value = JSON.parse(exp.bulletsRu).join('\n')
+  bulletsKoText.value = exp.bulletsKo ? JSON.parse(exp.bulletsKo).join('\n') : ''
 }
 
 function closeForm() {
@@ -215,28 +309,45 @@ function closeForm() {
   form.value = {
     key: '',
     year: '',
+    startMonth: null,
+    startYear: null,
+    endMonth: null,
+    endYear: null,
+    isPresent: 0,
     roleEn: '',
     roleRu: '',
+    roleKo: '',
     companyEn: '',
     companyRu: '',
+    companyKo: '',
     bulletsEn: '',
     bulletsRu: '',
+    bulletsKo: '',
     techEn: '',
     techRu: '',
+    techKo: '',
     order: 1
   }
   bulletsEnText.value = ''
   bulletsRuText.value = ''
+  bulletsKoText.value = ''
 }
 
 async function saveExperience() {
   saving.value = true
   
   try {
+    const yearText = form.value.startMonth && form.value.startYear
+      ? `${months[form.value.startMonth - 1].substring(0, 3)} ${form.value.startYear}${form.value.isPresent ? ' – Now' : form.value.endMonth && form.value.endYear ? ` – ${months[form.value.endMonth - 1].substring(0, 3)} ${form.value.endYear}` : ''}`
+      : form.value.year
+
     const payload = {
       ...form.value,
+      year: yearText,
+      isPresent: form.value.isPresent ? 1 : 0,
       bulletsEn: JSON.stringify(bulletsEnText.value.split('\n').filter(b => b.trim())),
-      bulletsRu: JSON.stringify(bulletsRuText.value.split('\n').filter(b => b.trim()))
+      bulletsRu: JSON.stringify(bulletsRuText.value.split('\n').filter(b => b.trim())),
+      bulletsKo: bulletsKoText.value ? JSON.stringify(bulletsKoText.value.split('\n').filter(b => b.trim())) : null
     }
 
     if (editingExperience.value) {

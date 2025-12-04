@@ -11,9 +11,9 @@ export default defineEventHandler(async (event) => {
 
     return allProjects.map(project => ({
       key: project.key,
-      title: locale === 'ru' ? project.titleRu : project.titleEn,
-      desc: locale === 'ru' ? project.descRu : project.descEn,
-      description: locale === 'ru' ? project.descriptionRu : project.descriptionEn,
+      title: locale === 'ru' ? project.titleRu : locale === 'ko' ? (project.titleKo || project.titleEn) : project.titleEn,
+      desc: locale === 'ru' ? project.descRu : locale === 'ko' ? (project.descKo || project.descEn) : project.descEn,
+      description: locale === 'ru' ? project.descriptionRu : locale === 'ko' ? (project.descriptionKo || project.descriptionEn) : project.descriptionEn,
       link: project.link || '',
       githubLink: project.githubLink || '',
       deployLink: project.deployLink || '',

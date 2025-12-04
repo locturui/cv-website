@@ -12,7 +12,8 @@ export default defineNuxtConfig({
     lazy: true,
     locales: [
       { code: 'en', iso: 'en-US', file: 'en.json', name: 'English' },
-      { code: 'ru', iso: 'ru-RU', file: 'ru.json', name: 'Русский' }
+      { code: 'ru', iso: 'ru-RU', file: 'ru.json', name: 'Русский' },
+      { code: 'ko', iso: 'ko-KR', file: 'ko.json', name: '한국어' }
     ],
     strategy: 'prefix_except_default',
     defaultLocale: 'en'

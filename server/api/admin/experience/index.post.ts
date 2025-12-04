@@ -11,15 +11,24 @@ export default defineEventHandler(async (event) => {
     const db = useDatabase()
     const [newExperience] = await db.insert(experience).values({
       key: body.key,
-      year: body.year,
+      year: body.year || '',
+      startMonth: body.startMonth || null,
+      startYear: body.startYear || null,
+      endMonth: body.endMonth || null,
+      endYear: body.endYear || null,
+      isPresent: body.isPresent || 0,
       roleEn: body.roleEn,
       roleRu: body.roleRu,
+      roleKo: body.roleKo || null,
       companyEn: body.companyEn,
       companyRu: body.companyRu,
+      companyKo: body.companyKo || null,
       bulletsEn: body.bulletsEn,
       bulletsRu: body.bulletsRu,
+      bulletsKo: body.bulletsKo || null,
       techEn: body.techEn,
       techRu: body.techRu,
+      techKo: body.techKo || null,
       order: body.order || 999
     }).returning()
 

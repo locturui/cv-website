@@ -8,8 +8,8 @@
         "contact": "Contact"
     },
     "hero": {
-        "hi": "Hi, I’m",
-        "bio": "Front‑end developer with a knack for data‑driven products. I build fast, accessible interfaces in Vue 3 / Nuxt 3, sprinkle in TailwindCSS, and wire everything to scalable backends."
+        "hi": "Hi, I'm",
+        "bio": "Full‑stack developer building web apps from UI to API. I work with Vue and Nuxt on the frontend, handle backend integration, and focus on making things fast and user‑friendly."
     },
     "projects": {
         "btn": "Explore projects"
@@ -20,11 +20,19 @@
         "coffee": "Cups of coffee"
     },
     "skills": {
-        "title": "Skill Set"
+        "title": "Skills",
+        "error": "Failed to load skills",
+        "retry": "Try Again",
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "devops": "DevOps & Soft Skills",
+        "viewDetails": "View Details →"
     },
     "exp": {
         "title": "Experience",
         "stackLabel": "Stack",
+        "error": "Failed to load experience",
+        "retry": "Try Again",
         "jobs": {
             "excursioncrm": {
                 "year": "Apr 2025 – Now",
@@ -77,16 +85,20 @@
             "tech": "Technologies Used",
             "viewGithub": "View on GitHub",
             "viewDemo": "View Live Demo",
-            "close": "Close"
+            "close": "Close",
+            "fullscreenHint": "Click to view fullscreen",
+            "imageAlt": "{title} - Image {index}",
+            "thumbnailAlt": "Thumbnail {index}"
         }
     },
     "cta": {
-        "title": "Let’s Work Together",
+        "title": "Let's Work Together",
         "lead": "Got an idea or position that could use my skills?",
         "add": "Drop me a message — always happy to chat!",
         "email": "Email",
         "telegram": "Telegram",
-        "github": "GitHub"
+        "github": "GitHub",
+        "kakao": "KakaoTalk"
     }
 }
   

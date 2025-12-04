@@ -141,7 +141,53 @@
 
     <div class="card bg-base-200 p-4">
       <h4 class="font-bold text-lg mb-4 flex items-center gap-2">
-        <span class="badge badge-primary">4</span> Images
+        <span class="badge badge-primary">4</span> Korean Content
+      </h4>
+      <div class="space-y-4">
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text font-semibold">제목</span>
+            <span class="label-text-alt text-error">*</span>
+          </label>
+          <input 
+            v-model="form.titleKo" 
+            type="text" 
+            required 
+            class="input input-bordered focus:input-primary" 
+            placeholder="내 멋진 프로젝트"
+          />
+        </div>
+        
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text font-semibold">짧은 설명</span>
+            <span class="label-text-alt text-xs">카드 미리보기 텍스트</span>
+          </label>
+          <input 
+            v-model="form.descKo" 
+            type="text" 
+            class="input input-bordered focus:input-primary" 
+            placeholder="한 줄 설명"
+          />
+        </div>
+        
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text font-semibold">전체 설명</span>
+            <span class="label-text-alt text-xs">모달 설명</span>
+          </label>
+          <textarea 
+            v-model="form.descriptionKo" 
+            class="textarea textarea-bordered focus:textarea-primary h-40" 
+            placeholder="세부사항, 기능 등을 포함한 전체 프로젝트 설명"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="card bg-base-200 p-4">
+      <h4 class="font-bold text-lg mb-4 flex items-center gap-2">
+        <span class="badge badge-primary">5</span> Images
       </h4>
       <div class="space-y-6">
         <div>
@@ -237,7 +283,7 @@
     <!-- Tech Stack -->
     <div class="card bg-base-200 p-4">
       <h4 class="font-bold text-lg mb-4 flex items-center gap-2">
-        <span class="badge badge-primary">5</span> Tech Stack
+        <span class="badge badge-primary">6</span> Tech Stack
       </h4>
       <div class="form-control">
         <label class="label">
@@ -312,10 +358,13 @@ const form = reactive({
   key: '',
   titleEn: '',
   titleRu: '',
+  titleKo: '',
   descEn: '',
   descRu: '',
+  descKo: '',
   descriptionEn: '',
   descriptionRu: '',
+  descriptionKo: '',
   link: '',
   githubLink: '',
   deployLink: '',
@@ -329,10 +378,13 @@ watch(() => props.project, (newProject) => {
     form.key = newProject.key || ''
     form.titleEn = newProject.titleEn || ''
     form.titleRu = newProject.titleRu || ''
+    form.titleKo = newProject.titleKo || ''
     form.descEn = newProject.descEn || ''
     form.descRu = newProject.descRu || ''
+    form.descKo = newProject.descKo || ''
     form.descriptionEn = newProject.descriptionEn || ''
     form.descriptionRu = newProject.descriptionRu || ''
+    form.descriptionKo = newProject.descriptionKo || ''
     form.link = newProject.link || ''
     form.githubLink = newProject.githubLink || ''
     form.deployLink = newProject.deployLink || ''
@@ -345,10 +397,13 @@ watch(() => props.project, (newProject) => {
     form.key = ''
     form.titleEn = ''
     form.titleRu = ''
+    form.titleKo = ''
     form.descEn = ''
     form.descRu = ''
+    form.descKo = ''
     form.descriptionEn = ''
     form.descriptionRu = ''
+    form.descriptionKo = ''
     form.link = ''
     form.githubLink = ''
     form.deployLink = ''

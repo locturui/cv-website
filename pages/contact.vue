@@ -34,6 +34,13 @@
             <Github class="w-6 h-6 group-hover:rotate-12 transition-transform" /> 
             {{ $t('cta.github') }}
           </a>
+            <div 
+              class="text-lg px-8 py-4 group font-semibold rounded-xl transition-all duration-300 shadow-lg bg-[#FEE500] text-[#3C1E1E] border-2 border-[#FEE500] flex items-center justify-center gap-2 cursor-default">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3c5.799 0 10.5 3.664 10.5 8.185 0 4.52-4.701 8.184-10.5 8.184a13.5 13.5 0 0 1-1.727-.11l-4.408 2.883c-.501.265-.678.236-.472-.413l.892-3.678c-2.88-1.46-4.785-3.99-4.785-6.866C1.5 6.665 6.201 3 12 3z"/>
+              </svg>
+              <span>{{ $t('cta.kakao') }}: <span class="font-mono">locturui</span></span>
+            </div>
         </div>
       </div>
     </div>
@@ -45,6 +52,8 @@
 
 <script setup lang="ts">
 import { Mail, Send, Github } from 'lucide-vue-next'
+
+const { locale } = useI18n()
 
 definePageMeta({
   layout: 'home'

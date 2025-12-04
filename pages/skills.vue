@@ -21,15 +21,15 @@
     </div>
 
     <div v-else-if="error" class="text-center py-10">
-      <p class="text-error mb-4">Failed to load skills</p>
-      <button @click="refresh()" class="custom-btn custom-btn-primary">Try Again</button>
+      <p class="text-error mb-4">{{ $t('skills.error') }}</p>
+      <button @click="refresh()" class="custom-btn custom-btn-primary">{{ $t('skills.retry') }}</button>
     </div>
 
     <div v-else class="space-y-12">
       <div data-aos="fade-up">
         <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
           <div class="w-1 h-8 bg-gradient-to-b from-primary to-primary/30 rounded-full"></div>
-          Frontend & Design
+          {{ $t('skills.frontend') }}
         </h3>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           <div v-for="skill in skills?.frontend" :key="skill.name" 
@@ -46,7 +46,7 @@
       <div data-aos="fade-up" data-aos-delay="100">
         <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
           <div class="w-1 h-8 bg-gradient-to-b from-secondary to-secondary/30 rounded-full"></div>
-          Backend & Database
+          {{ $t('skills.backend') }}
         </h3>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           <div v-for="skill in skills?.backend" :key="skill.name" 
@@ -63,7 +63,7 @@
       <div data-aos="fade-up" data-aos-delay="200">
         <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
           <div class="w-1 h-8 bg-gradient-to-b from-accent to-accent/30 rounded-full"></div>
-          DevOps & Soft Skills
+          {{ $t('skills.devops') }}
         </h3>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           <div v-for="skill in skills?.devops" :key="skill.name" 

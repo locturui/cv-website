@@ -2,6 +2,7 @@ import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
 import { experience } from '~/server/database/schema'
 import { asc } from 'drizzle-orm'
+import { formatExperienceDate } from '~/server/utils/dateFormatter'
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)
@@ -21,14 +22,27 @@ export default defineEventHandler(async (event) => {
   try {
     const experiences = await db.select().from(experience).orderBy(asc(experience.order))
 
-    return experiences.map((exp) => ({
-      key: exp.key,
-      year: exp.year,
-      role: locale === 'ru' ? exp.roleRu : exp.roleEn,
-      company: locale === 'ru' ? exp.companyRu : exp.companyEn,
-      bullets: JSON.parse(locale === 'ru' ? exp.bulletsRu : exp.bulletsEn),
-      tech: locale === 'ru' ? exp.techRu : exp.techEn
-    }))
+    return experiences.map((exp) => {
+      const formattedYear = (exp.startMonth && exp.startYear)
+        ? formatExperienceDate(
+            exp.startMonth,
+            exp.startYear,
+            exp.endMonth,
+            exp.endYear,
+            exp.isPresent,
+            locale
+          )
+        : exp.year
+
+      return {
+        key: exp.key,
+        year: formattedYear,
+        role: locale === 'ru' ? exp.roleRu : locale === 'ko' ? (exp.roleKo || exp.roleEn) : exp.roleEn,
+        company: locale === 'ru' ? exp.companyRu : locale === 'ko' ? (exp.companyKo || exp.companyEn) : exp.companyEn,
+        bullets: JSON.parse(locale === 'ru' ? exp.bulletsRu : locale === 'ko' ? (exp.bulletsKo || exp.bulletsEn) : exp.bulletsEn),
+        tech: locale === 'ru' ? exp.techRu : locale === 'ko' ? (exp.techKo || exp.techEn) : exp.techEn
+      }
+    })
   } catch (error: any) {
     throw createError({
       statusCode: 500,
