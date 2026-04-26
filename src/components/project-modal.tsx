@@ -70,7 +70,7 @@ export function ProjectModal({ project, onClose }: Props) {
       }}
     >
       <div className="relative bg-cream brutal-border brutal-shadow-lg w-full max-w-6xl max-h-[92vh] flex flex-col">
-        <div className="flex justify-between items-center bg-ink text-cream px-6 py-4 brutal-border-b shrink-0">
+        <div className="flex justify-between items-center bg-ink text-cream px-4 sm:px-6 py-3 sm:py-4 brutal-border-b shrink-0">
           <h3 className="font-display text-2xl sm:text-3xl uppercase truncate">{project.title}</h3>
           <button
             onClick={onClose}
@@ -82,7 +82,7 @@ export function ProjectModal({ project, onClose }: Props) {
         </div>
 
         <div className="grid lg:grid-cols-5 gap-0 flex-1 min-h-0 overflow-y-auto lg:overflow-hidden">
-          <div className="lg:col-span-3 p-6 border-b-4 border-ink lg:border-b-0 lg:border-r-4 lg:overflow-y-auto">
+          <div className="lg:col-span-3 min-w-0 p-4 sm:p-6 border-b-4 border-ink lg:border-b-0 lg:border-r-4 lg:overflow-y-auto">
             <div
               className="relative aspect-video bg-paper brutal-border-2 cursor-zoom-in overflow-hidden"
               onClick={() => setFullscreen(true)}
@@ -138,12 +138,12 @@ export function ProjectModal({ project, onClose }: Props) {
             )}
           </div>
 
-          <div className="lg:col-span-2 p-6 sm:p-8 flex flex-col gap-6 lg:overflow-y-auto">
+          <div className="lg:col-span-2 min-w-0 p-4 sm:p-8 flex flex-col gap-6 lg:overflow-y-auto">
             <div>
               <p className="font-mono text-xs font-bold uppercase tracking-widest mb-3">
                 {t('about')}
               </p>
-              <p className="whitespace-pre-line leading-relaxed">{project.description}</p>
+              <p className="whitespace-pre-line leading-relaxed break-words">{project.description}</p>
             </div>
 
             <div>
