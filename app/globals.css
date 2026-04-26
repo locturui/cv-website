@@ -33,9 +33,6 @@ body {
   font-feature-settings: "ss01", "cv11";
 }
 
-:lang(ko) {
-  font-size: 1.07em;
-}
 :lang(ko) .brutal-display,
 :lang(ko) h1,
 :lang(ko) h2,
