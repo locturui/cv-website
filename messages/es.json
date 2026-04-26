@@ -1,0 +1,117 @@
+{
+    "nav": {
+        "name": "Stepan Leonov",
+        "home": "Inicio",
+        "skills": "Habilidades",
+        "exp": "Experiencia",
+        "projects": "Proyectos",
+        "contact": "Contacto"
+    },
+    "hero": {
+        "hi": "Hola, soy",
+        "bio": "Desarrollador full‑stack que construye aplicaciones web de punta a punta: interfaz, API e integración. Trabajo con Vue y Nuxt en el frontend, me encargo del backend y hago que todo sea rápido y fácil de usar."
+    },
+    "projects": {
+        "btn": "Ver proyectos"
+    },
+    "now": {
+        "title": "Ahora",
+        "timeLabel": "Innopolis · UTC+3",
+        "workingLabel": "Construyendo",
+        "learningLabel": "Aprendiendo",
+        "learning": "Go, sistemas distribuidos, magia de tipos",
+        "status": "Disponible para trabajar"
+    },
+    "featured": {
+        "eyebrow": "01 / Trabajo reciente",
+        "title": "Destacado",
+        "viewAll": "Todos los proyectos",
+        "empty": "Pronto habrá proyectos"
+    },
+    "outro": {
+        "line1": "Hagamos",
+        "line2": "algo ruidoso.",
+        "cta": "Escríbeme"
+    },
+    "skills": {
+        "title": "Habilidades",
+        "error": "No se pudieron cargar las habilidades",
+        "retry": "Reintentar",
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "devops": "DevOps y Soft Skills",
+        "viewDetails": "Ver detalles →"
+    },
+    "exp": {
+        "title": "Experiencia",
+        "stackLabel": "Stack",
+        "error": "No se pudo cargar la experiencia",
+        "retry": "Reintentar",
+        "jobs": {
+            "excursioncrm": {
+                "year": "Abr 2025 – Actualidad",
+                "role": "Desarrollador Frontend",
+                "company": "ExcursionCRM · Universidad de Innopolis",
+                "bullets": [
+                "Desarrollo la UI de reservas y agenda con Nuxt 3 y Pinia",
+                "Implementé un constructor de formularios dinámico y un mapa interactivo"
+                ],
+                "tech": "Vue 3, Nuxt 3, Tailwind CSS / daisyUI, Pinia"
+            },
+            "alumniportal": {
+                "year": "Jun 2024 – Jul 2024",
+                "role": "Desarrollador Frontend",
+                "company": "AlumniPortal · Universidad de Innopolis",
+                "bullets": [
+                "Diseñé la arquitectura del portal, el flujo de autenticación y la integración con la API",
+                "Mentoreé a otros dos desarrolladores"
+                ],
+                "tech": "Vue 3, Tailwind CSS, Pinia"
+            },
+            "qpd": {
+                "year": "Ene 2022 – Ago 2022",
+                "role": "Desarrollador Frontend Junior",
+                "company": "QPD (proyecto Vodafone)",
+                "bullets": [
+                "Construí interfaces React + TypeScript para el CRM interno",
+                "Optimicé tablas de datos grandes y creé componentes de UI personalizados"
+                ],
+                "tech": "React, TypeScript, Redux, REST API"
+            },
+            "elbrus": {
+                "year": "Jul 2021 – Dic 2021",
+                "role": "Becario Full‑Stack (Bootcamp)",
+                "company": "Elbrus Coding Bootcamp",
+                "bullets": [
+                "ECO‑FRIEND: app web de reciclaje basada en mapa (React + Node)",
+                "MEBEL CRM: CRM para una empresa de muebles (Handlebars + Node)"
+                ],
+                "tech": "React, Node.js, MongoDB, PostgreSQL"
+            }
+        }
+    },
+    "proj": {
+        "title": "Proyectos",
+        "error": "No se pudieron cargar los proyectos",
+        "retry": "Reintentar",
+        "modal": {
+            "about": "Sobre el proyecto",
+            "tech": "Tecnologías utilizadas",
+            "viewGithub": "Ver en GitHub",
+            "viewDemo": "Ver demo en vivo",
+            "close": "Cerrar",
+            "fullscreenHint": "Haz clic para ver en pantalla completa",
+            "imageAlt": "{title} - Imagen {index}",
+            "thumbnailAlt": "Miniatura {index}"
+        }
+    },
+    "cta": {
+        "title": "Trabajemos juntos",
+        "lead": "¿Tienes una idea o una vacante donde encajen mis habilidades?",
+        "add": "Escríbeme — ¡siempre feliz de conversar!",
+        "email": "Correo",
+        "telegram": "Telegram",
+        "github": "GitHub",
+        "kakao": "KakaoTalk"
+    }
+}

@@ -1,148 +1,134 @@
-# 📄 CV Website
+# cv-website
 
-A clean, responsive portfolio site built with **Nuxt 3**, **Vue 3**, **Tailwind CSS 4** and **DaisyUI 5**.
-It comes pre‑wired with scroll animations (AOS), crisp SVG icons from lucide‑vue‑next, and a REST API powered by Nuxt Nitro.
+Personal CV / portfolio site, **Next.js 15 + neo-brutalist redesign**.
 
-![screenshot of home page](https://github.com/user-attachments/assets/d6c414dd-60d6-40e8-9b8e-8f88dc06c81b)
+Ported from Nuxt 3. Same database, same admin secret, same Vercel Blob bucket
+— only the framework and the visual language changed.
 
----
+## Stack
 
-## 🛠 Tech Stack
+- **Framework**: Next.js 15 (App Router) + React 19 + TypeScript
+- **Styling**: Tailwind CSS v4 (CSS-first config in `app/globals.css`)
+- **Type**: Archivo Black (display) + Space Grotesk (body) + JetBrains Mono — via `next/font`
+- **i18n**: `next-intl` 3.x — `en` (default, no prefix), `ru`, `ko`
+- **DB**: Drizzle ORM + `postgres` (same Postgres schema as before)
+- **Storage**: Vercel Blob for project images
+- **Icons**: `lucide-react`
 
-* **Frontend:** Nuxt 3, Vue 3, TypeScript
-* **Styling:** Tailwind CSS 4, DaisyUI 5
-* **Backend:** Nuxt Nitro (server API)
-* **Database:** PostgreSQL, Drizzle ORM
-* **Animation:** AOS
-* **Icons:** lucide‑vue‑next 
-* **Tooling:** pnpm, Vite
-* **Deployment:** Vercel (with Vercel Postgres)
+## Layout
 
----
+```
+app/
+  [locale]/                  # public site, prefix-as-needed
+    layout.tsx               # site header + footer + NextIntl provider
+    page.tsx                 # home
+    experience/page.tsx
+    projects/page.tsx        # server-rendered grid + client modal
+    skills/page.tsx
+    contact/page.tsx
+  admin/                     # English-only, no locale prefix
+    layout.tsx               # auth gate + sidebar
+    page.tsx                 # projects CRUD
+    experience/page.tsx
+    skills/page.tsx
+  api/
+    projects/                # public read endpoints
+    experience/
+    skills/
+    admin/                   # protected, Bearer token in Authorization header
+      projects/   experience/   skills/   upload/
 
-## 🚀 Quick Start
+src/
+  components/                # presentational + interactive components
+    admin/                   # admin shell, modals, forms
+  i18n/                      # next-intl routing/navigation/request config
+  lib/
+    db/                      # drizzle schema + client (`getDb()`)
+    auth.ts                  # Bearer-token check helpers
+    date-formatter.ts
+
+messages/                    # en.json / ru.json / ko.json
+middleware.ts                # next-intl middleware (excludes /api and /admin)
+```
+
+## Environment
+
+Copy `.env.example` to `.env` and set:
+
+```
+DATABASE_URL=postgres://...
+ADMIN_SECRET=...
+BLOB_READ_WRITE_TOKEN=...
+```
+
+## Run it
 
 ```bash
-# 1. Clone the repo
-git clone https://github.com/locturui/cv-website.git
-cd cv-website
+pnpm install        # or: npm install
+pnpm dev            # http://localhost:3000
 
-# 2. Install dependencies
-pnpm install
-
-# 3. Set up environment variables
-cp .env.example .env
-
-# 4. Set up database
-pnpm db:push
-pnpm db:seed
-
-# 5. Start the dev server
-pnpm dev           
-```
-Open **[http://localhost:3000](http://localhost:3000)** 
-
-### Production build
-
-```bash
-pnpm build
-pnpm preview
+pnpm db:push        # push schema to Postgres
+pnpm db:studio      # drizzle studio
 ```
 
-### Database Management
+## Routes
 
-```bash
-pnpm db:push       # Sync schema to database
-pnpm db:seed       # Seed database with data
-pnpm db:studio     # Open Drizzle Studio GUI
-pnpm db:generate   # Generate migrations
-```
+Public:
+- `/` · `/ru` · `/ko` — home
+- `/experience` · `/ru/experience` · `/ko/experience`
+- `/projects` · `/skills` · `/contact` (and locale-prefixed equivalents)
 
-For detailed database setup instructions, see [DATABASE_SETUP.md](./DATABASE_SETUP.md)
+Admin (no locale prefix):
+- `/admin` — projects CRUD
+- `/admin/experience`
+- `/admin/skills`
 
----
+API:
+- `GET /api/projects?locale=en` · `GET /api/projects/[key]?locale=en`
+- `GET /api/experience?locale=en`
+- `GET /api/skills`
+- `GET|POST|PATCH|DELETE /api/admin/{projects,experience,skills}/...`
+- `POST /api/admin/upload` (multipart, `file` field)
+- `POST /api/admin/skills/reorder`
 
-## ☁️ Deployment
+Admin endpoints require `Authorization: Bearer <ADMIN_SECRET>`. The list
+endpoints (`GET`) also accept `?secret=<ADMIN_SECRET>` so the browser-side
+auth check after login works without a custom fetch wrapper.
 
-[Here is the deployed website](https://locturui-cv.vercel.app)
+## Design system
 
-### Deploy to Vercel
+Neo-brutalist with colour: chunky display sans, thick black borders, hard
+drop shadows, bold flat colour blocks. The vocabulary lives in
+`app/globals.css`:
 
-1. **Push to GitHub**
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   git push
-   ```
+- `brutal-border` / `brutal-border-2` — 4px / 2px solid black borders
+- `brutal-shadow` / `brutal-shadow-sm` / `brutal-shadow-lg` — hard ink shadows
+- `brutal-press` — pressable card/button (hover lifts, active sinks into shadow)
+- `brutal-display` / `brutal-mono` / `brutal-marker` / `brutal-tag` —
+  typographic primitives
+- Tokens via Tailwind v4 `@theme`: `bg-brutal-yellow`, `bg-brutal-pink`,
+  `bg-brutal-blue`, `bg-brutal-red`, `bg-brutal-green`, `bg-cream`, `bg-paper`,
+  `text-ink`, `font-display`, `font-mono`, etc.
 
-2. **Import to Vercel**
-   - Go to [vercel.com](https://vercel.com)
-   - Import your GitHub repository
-   - Vercel will auto-detect Nuxt 3
+Reusable React primitives: `BrutalCard`, `BrutalButton`, `BrutalLink`,
+`SectionHeader`.
 
-3. **Add Database**
-   - In Vercel dashboard, go to "Storage" tab
-   - Create a new Postgres database
-   - Vercel automatically adds `POSTGRES_URL` to environment variables
+## Notes on the port
 
-4. **Initialize Database** (after first deployment)
-   ```bash
-   # Pull environment variables locally
-   vercel env pull
-   
-   # Run seed script
-   pnpm db:seed
-   ```
-
-5. **Done!** Your site is live with a fully functional database.
-
-### Environment Variables
-
-Required environment variables in Vercel:
-- `POSTGRES_URL` - Automatically set by Vercel Postgres
-- Or `DATABASE_URL` - If using another PostgreSQL provider
-
----
-
-## 📁 Project Structure
-
-```
-cv-website/
-├── components/          # Vue components
-├── pages/              # Nuxt pages/routes
-├── server/
-│   ├── api/           # API endpoints
-│   └── database/      # Database schema & client
-├── i18n/              # Internationalization
-├── public/            # Static assets
-└── drizzle.config.ts  # Database configuration
-```
-
----
-
-## 🔌 API Endpoints
-
-- `GET /api/projects` - Get all projects (supports `?locale=en|ru`)
-- `GET /api/projects/:key` - Get single project by key
-
-Example:
-```bash
-curl http://localhost:3000/api/projects?locale=en
-```
-
----
-
-## 💬 Acknowledgements
-
-* [Nuxt 3](https://nuxt.com/)
-* [Vue 3](https://vuejs.org/)
-* [Tailwind CSS](https://tailwindcss.com/)
-* [DaisyUI](https://daisyui.com/)
-* [Drizzle ORM](https://orm.drizzle.team/)
-* [PostgreSQL](https://www.postgresql.org/)
-* [lucide‑icons](https://lucide.dev/)
-* [AOS](https://michalsnik.github.io/aos/)
-
----
-
-> Built with ♥ and Nuxt in 2025.
+- The original Nuxt server routes used `useState('adminSecret')` + a Nuxt
+  middleware to gate `/admin`. Equivalent here: `<AdminProvider>` + an
+  in-component auth gate (`AdminShell`) that reads `localStorage` and verifies
+  the secret against `/api/admin/projects?secret=...` on mount.
+- Drizzle schema is unchanged — your existing migrations, rows and
+  `images`/`stack` JSON-encoded columns work as-is.
+- Vercel Blob upload behaviour is preserved: tries `head(filename)` first
+  to dedupe, otherwise `put`.
+- AOS scroll-reveal was removed in favour of a single CSS `brutal-rise`
+  animation on the hero and the `brutal-press` micro-interaction on every
+  pressable element. Faster, no external dep, no JS observer churn.
+- The fancy "Liquid Glass" navbar from the original is replaced by a flat,
+  bordered nav. Mobile menu becomes a stack of bold colour blocks.
+- The admin Skills page uses up/down arrow buttons for reordering instead of
+  drag-and-drop (the original was a 1000-line single-file Vue component;
+  this is a tighter, no-dep equivalent). The same `/api/admin/skills/reorder`
+  endpoint is used.

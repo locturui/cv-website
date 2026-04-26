@@ -1,0 +1,118 @@
+{
+    "nav": {
+        "name": "Stepan Leonov",
+        "home": "Home",
+        "skills": "Skills",
+        "exp":"Experience",
+        "projects": "Projects",
+        "contact": "Contact"
+    },
+    "hero": {
+        "hi": "Hi, I'm",
+        "bio": "Full‑stack developer building web apps from UI to API. I work with Vue and Nuxt on the frontend, handle backend integration, and focus on making things fast and user‑friendly."
+    },
+    "projects": {
+        "btn": "Explore projects"
+    },
+    "now": {
+        "title": "Now",
+        "timeLabel": "Innopolis · UTC+3",
+        "workingLabel": "Currently building",
+        "learningLabel": "Currently learning",
+        "learning": "Go, distributed systems, type-level wizardry",
+        "status": "Open to work"
+    },
+    "featured": {
+        "eyebrow": "01 / Latest work",
+        "title": "Featured",
+        "viewAll": "All projects",
+        "empty": "No projects yet — check back soon"
+    },
+    "outro": {
+        "line1": "Let's build",
+        "line2": "something loud.",
+        "cta": "Get in touch"
+    },
+    "skills": {
+        "title": "Skills",
+        "error": "Failed to load skills",
+        "retry": "Try Again",
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "devops": "DevOps & Soft Skills",
+        "viewDetails": "View Details →"
+    },
+    "exp": {
+        "title": "Experience",
+        "stackLabel": "Stack",
+        "error": "Failed to load experience",
+        "retry": "Try Again",
+        "jobs": {
+            "excursioncrm": {
+                "year": "Apr 2025 – Now",
+                "role": "Frontend Developer",
+                "company": "ExcursionCRM · Innopolis University",
+                "bullets": [
+                "Developing booking & schedule UI with Nuxt 3 and Pinia",
+                "Implemented dynamic form builder and interactive map view"
+                ],
+                "tech": "Vue 3, Nuxt 3, Tailwind CSS / daisyUI, Pinia"
+            },
+            "alumniportal": {
+                "year": "Jun 2024 – Jul 2024",
+                "role": "Frontend Developer",
+                "company": "AlumniPortal · Innopolis University",
+                "bullets": [
+                "Architected portal layout, authentication flow, API integration",
+                "Mentored two other developers"
+                ],
+                "tech": "Vue 3, Tailwind CSS, Pinia"
+            },
+            "qpd": {
+                "year": "Jan 2022 – Aug 2022",
+                "role": "Junior Frontend Developer",
+                "company": "QPD (Vodafone project)",
+                "bullets": [
+                "Built React + TypeScript interfaces for internal CRM",
+                "Optimised large data tables and crafted custom UI components"
+                ],
+                "tech": "React, TypeScript, Redux, REST API"
+            },
+            "elbrus": {
+                "year": "Jul 2021 – Dec 2021",
+                "role": "Full‑Stack Dev Intern (Bootcamp)",
+                "company": "Elbrus Coding Bootcamp",
+                "bullets": [
+                "ECO‑FRIEND: map‑based recycling web‑app (React + Node)",
+                "MEBEL CRM: furniture company CRM (Handlebars + Node)"
+                ],
+                "tech": "React, Node.js, MongoDB, PostgreSQL"
+            }
+        }
+    },
+    "proj": {
+        "title": "Projects",
+        "error": "Failed to load projects",
+        "retry": "Try Again",
+        "modal": {
+            "about": "About the Project",
+            "tech": "Technologies Used",
+            "viewGithub": "View on GitHub",
+            "viewDemo": "View Live Demo",
+            "close": "Close",
+            "fullscreenHint": "Click to view fullscreen",
+            "imageAlt": "{title} - Image {index}",
+            "thumbnailAlt": "Thumbnail {index}"
+        }
+    },
+    "cta": {
+        "title": "Let's Work Together",
+        "lead": "Got an idea or position that could use my skills?",
+        "add": "Drop me a message — always happy to chat!",
+        "email": "Email",
+        "telegram": "Telegram",
+        "github": "GitHub",
+        "kakao": "KakaoTalk"
+    }
+}
+  
