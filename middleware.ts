@@ -5,5 +5,5 @@ export default createMiddleware(routing)
 
 export const config = {
   // Run on everything except API routes, _next assets, /admin, and static files.
-  matcher: ['/((?!api|admin|_next|_vercel|.*\\..*).*)'],
+  matcher: ['/((?!api|admin|_next|_vercel|icon|apple-icon|opengraph-image|twitter-image|sitemap.xml|robots.txt|.*\\..*).*)'],
 }
