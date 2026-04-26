@@ -29,14 +29,14 @@ export default async function ContactPage({
             <p className="font-mono text-xs font-bold uppercase tracking-widest opacity-70">
               {t('cta.email')}
             </p>
-            <p className="font-mono text-base sm:text-lg font-bold mt-2 break-all group-hover:underline decoration-4 underline-offset-4">
+            <p className="font-display text-base sm:text-lg font-bold mt-2 break-all group-hover:underline decoration-4 underline-offset-4">
               leonovstepan.jobs@outlook.com
             </p>
           </BrutalCard>
         </a>
 
         <a
-          href="https://t.me/peatubaeg"
+          href="https://t.me/locturui"
           target="_blank"
           rel="noopener noreferrer"
           className="group block"
@@ -46,8 +46,8 @@ export default async function ContactPage({
             <p className="font-mono text-xs font-bold uppercase tracking-widest opacity-70">
               {t('cta.telegram')}
             </p>
-            <p className="font-display text-2xl sm:text-3xl uppercase mt-2 break-words group-hover:underline decoration-4 underline-offset-4">
-              @peatubaeg
+            <p className="font-display text-2xl sm:text-3xl uppercase mt-2 wrap-break-word group-hover:underline decoration-4 underline-offset-4">
+              @locturui
             </p>
           </BrutalCard>
         </a>

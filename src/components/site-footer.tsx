@@ -3,7 +3,7 @@ import { Mail, Send, Github } from 'lucide-react'
 export function SiteFooter() {
   const year = new Date().getFullYear()
   return (
-    <footer className="brutal-border-t bg-ink text-cream mt-24">
+    <footer className="brutal-border-t bg-ink text-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div>
           <p className="font-display uppercase text-2xl tracking-tight leading-none">
@@ -22,7 +22,7 @@ export function SiteFooter() {
             <Mail className="w-5 h-5" />
           </a>
           <a
-            href="https://t.me/peatubaeg"
+            href="https://t.me/locturui"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Telegram"
