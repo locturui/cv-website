@@ -85,7 +85,6 @@ export function AdminProjectsPage() {
       const next = prev.slice()
       const [moved] = next.splice(fromIdx, 1)
       next.splice(toIdx, 0, moved)
-      // debounce persistence so a rapid drag doesn't fire many requests
       if (persistTimer.current) window.clearTimeout(persistTimer.current)
       persistTimer.current = window.setTimeout(() => persistOrder(next), 250)
       return next

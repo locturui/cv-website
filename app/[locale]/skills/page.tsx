@@ -81,7 +81,6 @@ function SkillStripe({
   if (!skills.length) return null
   return (
     <article className="brutal-border brutal-shadow bg-cream">
-      {/* Header bar — index, label, count */}
       <header
         className={`flex items-center justify-between gap-4 px-5 sm:px-8 py-4 brutal-border-b ${TONE_BG[tone]}`}
       >
@@ -98,7 +97,6 @@ function SkillStripe({
         </span>
       </header>
 
-      {/* Body — typographic list, no boxes */}
       <ul className="px-5 sm:px-8 py-6 sm:py-8 flex flex-wrap gap-x-6 sm:gap-x-10 gap-y-2 sm:gap-y-3">
         {skills.map((s, i) => (
           <li

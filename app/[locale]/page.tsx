@@ -14,7 +14,6 @@ const HERO_LASTNAME = 'Leonov.'
 async function fetchHomeData(locale: string) {
   try {
     const db = getDb()
-    // First in admin-defined order = "featured" on the home page.
     const [latestProject] = await db
       .select()
       .from(projects)
@@ -95,7 +94,6 @@ export default async function HomePage({
 
   return (
     <>
-      {/* ───── HERO ───── */}
       <section className="relative bg-cream pt-12 pb-20 sm:pt-16 sm:pb-28 overflow-hidden">
         <div className="absolute inset-0 brutal-stripes opacity-[0.04] pointer-events-none" />
         <CursorSpotlight />
@@ -166,7 +164,6 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ───── TICKER ───── */}
       <section className="bg-ink text-cream brutal-border-t brutal-border-b py-4 overflow-hidden brutal-marquee-hoverable">
         <div className="brutal-marquee">
           {Array.from({ length: 2 }).map((_, dup) => (
@@ -192,7 +189,6 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ───── FEATURED WORK ───── */}
       {project ? (
         <section className="bg-brutal-yellow py-16 sm:py-24 brutal-border-b">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -212,7 +208,7 @@ export default async function HomePage({
               href={{ pathname: '/projects', query: { p: project.key } } as never}
               className="group brutal-border brutal-shadow-lg bg-cream brutal-press grid md:grid-cols-2 overflow-hidden"
             >
-              <div className="aspect-video md:aspect-auto bg-paper relative overflow-hidden brutal-border-b md:brutal-border-b-0 md:border-r-4 md:border-ink">
+              <div className="aspect-video md:aspect-auto bg-paper relative overflow-hidden md:brutal-border-b-0 md:border-r-4 md:border-ink">
                 {project.image ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
@@ -246,7 +242,6 @@ export default async function HomePage({
         </section>
       ) : null}
 
-      {/* ───── NOW ───── */}
       <section className="bg-cream py-16 sm:py-24 brutal-border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <header className="flex items-baseline justify-between gap-4 flex-wrap mb-10">
@@ -262,7 +257,6 @@ export default async function HomePage({
           </header>
 
           <dl className="grid sm:grid-cols-2 gap-y-10 gap-x-12">
-            {/* Time */}
             <div className="flex flex-col">
               <dt className="font-mono text-xs font-bold uppercase tracking-widest opacity-60 mb-2">
                 {t('now.timeLabel')}
@@ -272,7 +266,6 @@ export default async function HomePage({
               </dd>
             </div>
 
-            {/* Currently building */}
             <div className="flex flex-col">
               <dt className="font-mono text-xs font-bold uppercase tracking-widest opacity-60 mb-2">
                 {t('now.workingLabel')}
@@ -291,7 +284,6 @@ export default async function HomePage({
               </dd>
             </div>
 
-            {/* Currently learning */}
             <div className="flex flex-col sm:col-span-2">
               <dt className="font-mono text-xs font-bold uppercase tracking-widest opacity-60 mb-2">
                 {t('now.learningLabel')}
@@ -304,7 +296,6 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ───── OUTRO CTA ───── */}
       <Link
         href="/contact"
         className="block bg-ink text-cream brutal-arrow-link group flex-1"

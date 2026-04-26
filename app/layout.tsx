@@ -9,8 +9,6 @@ import {
 import { getLocale } from 'next-intl/server'
 import './globals.css'
 
-// Display: Latin + Cyrillic (Unbounded was designed by a Ukrainian type foundry,
-// covers both with brutalist weight). Korean falls through to Black Han Sans.
 const unbounded = Unbounded({
   subsets: ['latin', 'cyrillic'],
   weight: ['700', '800', '900'],
@@ -25,7 +23,6 @@ const blackHanSans = Black_Han_Sans({
   display: 'swap',
 })
 
-// Body: Inter (Latin + Cyrillic) with Noto Sans KR as Korean fallback.
 const inter = Inter({
   subsets: ['latin', 'cyrillic'],
   weight: ['400', '500', '700', '800'],

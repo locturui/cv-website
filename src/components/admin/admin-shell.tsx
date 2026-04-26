@@ -30,7 +30,6 @@ export function AdminShell({ children }: { children: ReactNode }) {
             try {
               await login(pwd)
             } catch {
-              /* error already surfaced */
             } finally {
               setSubmitting(false)
             }

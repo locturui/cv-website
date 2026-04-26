@@ -37,8 +37,6 @@ export function PageTransition({ children }: { children: ReactNode }) {
 
   return (
     <>
-      {/* Manual cover lives OUTSIDE the keyed wrapper so it survives the
-          pathname-driven remount and never flashes during reconciliation. */}
       {covering ? (
         <div
           aria-hidden
@@ -48,8 +46,6 @@ export function PageTransition({ children }: { children: ReactNode }) {
       ) : null}
 
       <div key={pathname} className="brutal-page-wrapper relative">
-        {/* Auto sweep panel — only on navigations where no manual cover fired
-            (i.e. phase was idle at the moment this wrapper mounted). */}
         <AutoSlam phase={phase} />
         <div className="brutal-page-in">{children}</div>
       </div>
@@ -58,9 +54,6 @@ export function PageTransition({ children }: { children: ReactNode }) {
 }
 
 function AutoSlam({ phase }: { phase: Phase }) {
-  // Capture phase ONCE per mount. If a manual cover was already in flight
-  // when this wrapper mounted, never render the auto slam — preventing the
-  // "second yellow flash" after the manual cover-exit completes.
   const initialPhase = useRef(phase)
   if (initialPhase.current !== 'idle') return null
   return <div aria-hidden className="brutal-page-slam" />

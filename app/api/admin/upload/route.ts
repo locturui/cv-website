@@ -21,7 +21,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Invalid file' }, { status: 400 })
     }
 
-    // Try to find an existing blob by filename, return its URL if present
     try {
       const existing = await head(filename, {
         token: process.env.BLOB_READ_WRITE_TOKEN,
@@ -34,9 +33,7 @@ export async function POST(request: Request) {
           existing: true,
         })
       }
-    } catch {
-      // not found - proceed with upload
-    }
+    } catch {}
 
     const blob = await put(filename, file, {
       access: 'public',
